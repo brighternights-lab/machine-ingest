@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Site Value Evaluator</title>
+<style>
+:root{--pink:#FF0EAA;--teal:#5BE3DD;--mint:#9AD9C2;--ink:#D8DBE3;--muted:#8C93A6;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:-apple-system,"SF Pro Text","Segoe UI",Inter,Helvetica,Arial,sans-serif;color:var(--ink);min-height:100vh;
+background:radial-gradient(900px 600px at 15% -10%,rgba(255,14,170,.32),transparent 60%),radial-gradient(800px 500px at 100% 100%,rgba(91,227,221,.16),transparent 55%),linear-gradient(160deg,#141A2B 0%,#0E111B 45%,#05060B 100%);background-attachment:fixed}
+.wrap{max-width:1180px;margin:0 auto;padding:36px 20px 80px}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px}
+.logo{width:56px;height:76px;filter:drop-shadow(0 0 18px rgba(255,0,122,.75))}
+.brand{font-weight:900;letter-spacing:2px;text-transform:uppercase;font-size:15px;background:linear-gradient(90deg,#FF0EAA,#FF7A1A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;color:rgba(255,255,255,.5);font-size:9px;letter-spacing:4px;font-weight:600;background:none;color:rgba(255,255,255,.5)}
+h1{font-size:34px;margin:6px 0 4px;font-weight:800;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:15px;max-width:760px;line-height:1.5}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h2{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:700}
+.item{display:grid;grid-template-columns:24px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.item:last-child{border-bottom:0}
+.item label{cursor:pointer}
+.item .n{font-weight:600;font-size:15px}.item .d{color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.4}
+.item .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--mint);font-size:14px;white-space:nowrap}
+.item .v b{display:block;color:var(--ink);font-size:15px}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--pink)}
+.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.row:last-child{border-bottom:0}
+.row .n{font-size:14.5px;font-weight:600}.row .d{color:var(--muted);font-size:12.5px;margin-top:2px}
+.row input[type=number]{width:96px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 10px;font-size:14px;text-align:right}
+.row input:focus{outline:none;border-color:var(--teal)}
+.sticky{position:sticky;top:16px}
+.big{font-size:44px;font-weight:900;color:var(--pink);letter-spacing:-1px;line-height:1;margin:6px 0 2px;text-shadow:0 0 30px rgba(255,14,170,.35)}
+.range{color:var(--mint);font-size:14px}
+.kv{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+.kv:last-child{border-bottom:0}.kv b{font-variant-numeric:tabular-nums}
+.pill{display:inline-block;border-radius:999px;padding:9px 20px;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;background:transparent;color:var(--pink);border:1.5px solid var(--pink);cursor:pointer;margin:6px 8px 0 0}
+.pill.t{color:var(--teal);border-color:var(--teal)}
+.pill:hover{box-shadow:0 0 18px rgba(255,14,170,.35)}
+.callout{border:1px solid var(--teal);border-radius:14px;padding:14px 16px;color:var(--teal);font-size:13.5px;line-height:1.5;margin-top:16px;background:transparent}
+.bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin:10px 0 4px;display:flex}
+.bar i{display:block;height:100%}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.foot{color:var(--muted);font-size:12px;margin-top:26px;line-height:1.6}
+@media print{body{background:#0E111B}.pill{display:none}.sticky{position:static}}
+</style></head><body><div class="wrap">
+<header>
+<img class="logo" src="https://brighternights.com/wp-content/uploads/2026/08/bnl-bulb-logo.png" alt="">
+<div><div class="brand">Brighter Nights<small>Lighting Partner Program</small></div>
+<h1>Site Value Evaluator</h1>
+<div class="sub">What this site is worth on the ledger. Two parts. What another company would charge to build the same stack, and what it costs the contractor to teach a marketing agency permanent lighting from zero. Toggle what was built, adjust the contractor's numbers, and the ledger value updates live.</div></div>
+</header>
+
+<div class="grid">
+<div>
+<div class="card" id="build"><h2>Part 1 · What was built (market replacement cost)</h2><div id="items"></div></div>
+
+<div class="card" style="margin-top:20px"><h2>Part 2 · What the contractor saves by not teaching an agency</h2>
+<div class="row"><div><div class="n">Contractor's hourly value</div><div class="d">Owner time on a lighting business. Sales, bids, installs.</div></div><input type="number" id="rate" value="150" min="25" step="5"></div>
+<div class="row"><div><div class="n">Hours explaining permanent lighting</div><div class="d">Products, controllers, app, seasons, colors, install types, warranty, objections, pricing, competitors. A generic agency knows none of it.</div></div><input type="number" id="teach" value="60" min="0" step="5"></div>
+<div class="row"><div><div class="n">Hours reviewing and correcting agency work</div><div class="d">Wrong terms, wrong photos, wrong claims. Rounds of revisions before anything is right.</div></div><input type="number" id="fix" value="40" min="0" step="5"></div>
+<div class="row"><div><div class="n">Hours sourcing photos and video</div><div class="d">Shooting, editing, or licensing install imagery an agency does not have. Our library is included.</div></div><input type="number" id="media" value="80" min="0" step="5"></div>
+<div class="row"><div><div class="n">Months of delay vs. our launch</div><div class="d">Typical agency 4 to 8 months to a finished, ranking site. Ours is live in weeks.</div></div><input type="number" id="delay" value="5" min="0" step="1"></div>
+<div class="row"><div><div class="n">Contractor's expected monthly gross</div><div class="d">Used to price the delay. $500k year one is the program target.</div></div><input type="number" id="gross" value="41000" min="0" step="1000"></div>
+<div class="row"><div><div class="n">Share of that gross the website drives</div><div class="d">Percent of jobs that come from search, booking, and estimate tools.</div></div><input type="number" id="share" value="35" min="0" max="100" step="5"></div>
+</div>
+</div>
+
+<div class="sticky">
+<div class="card">
+<h2>Ledger value</h2>
+<div class="big" id="total">$0</div>
+<div class="range" id="range"></div>
+<div class="bar"><i id="b1" style="background:#FF0EAA"></i><i id="b2" style="background:#5BE3DD"></i><i id="b3" style="background:#9AD9C2"></i></div>
+<div class="legend"><span><i style="background:#FF0EAA"></i>Build</span><span><i style="background:#5BE3DD"></i>Contractor time</span><span><i style="background:#9AD9C2"></i>Delay cost</span></div>
+<div style="margin-top:14px">
+<div class="kv"><span>Build replacement cost</span><b id="kBuild"></b></div>
+<div class="kv"><span>Contractor hours avoided</span><b id="kHours"></b></div>
+<div class="kv"><span>Contractor time value</span><b id="kTime"></b></div>
+<div class="kv"><span>Revenue lost to agency delay</span><b id="kDelay"></b></div>
+<div class="kv"><span>Buyout today (ledger + 3 mo trailing fee)</span><b id="kBuy"></b></div>
+<div class="kv"><span>Est. earn out at 100% fee credit</span><b id="kYears"></b></div>
+</div>
+<div class="callout" id="note"></div>
+<span class="pill" onclick="preset('base')">Base package</span><span class="pill t" onclick="preset('all')">Everything</span><span class="pill t" onclick="window.print()">Print / PDF</span>
+</div>
+</div>
+</div>
+
+<div class="foot">Build line items are priced at 2026 published agency and freelance rates for home service contractors, midpoint used for the ledger, low and high shown as the range. Contractor time is valued at the hourly rate entered. Delay cost is monthly gross times website share times months of delay. Fee tier and earn out use the program's 7% to 3% sliding scale, with 100% of every fee dollar credited to the ledger. This is a valuation tool, not a quote. Ledger updates on ship date of each add-on with written approval.</div>
+</div>
+<script>
+const ITEMS=[
+{k:'site',n:'Custom website, 8 to 12 pages, lighting specific',d:'Design, copy, mobile, speed, brand. Not a template.',lo:8000,hi:25000,base:1},
+{k:'seo',n:'SEO foundation and local rankings setup',d:'Keyword map, on page, schema, Google Business, citations.',lo:3000,hi:8000,base:1},
+{k:'est',n:'Instant estimate tool',d:'Watt per foot pricing, roofline and landscape calculators.',lo:3000,hi:8000,base:1},
+{k:'book',n:'Online booking with deposits',d:'Calendar, confirmations, reminders, payment capture.',lo:1500,hi:4000,base:1},
+{k:'genie',n:'AI assistant trained on lighting',d:'Answers product, pricing, and install questions 24/7.',lo:3000,hi:10000,base:1},
+{k:'track',n:'Tracking, call tracking, and rankings dashboard',d:'Every lead sourced. Weekly report.',lo:3000,hi:8000,base:1},
+{k:'lib',n:'Photo and video library license',d:'Thousands of real installs. A year of production to replace.',lo:15000,hi:30000,base:1},
+{k:'crm',n:'CRM built into the site',d:'Pipeline, follow ups, quotes, job status.',lo:5000,hi:20000,base:1},
+{k:'ads',n:'Ad accounts, landing pages, campaign setup',d:'Google and Meta build out, conversion tracking, matched spend.',lo:2500,hi:7000,base:1},
+{k:'collat',n:'Sales collateral, white labeled',d:'Catalogs, trifolds, spec sheets, homeowner content.',lo:4000,hi:12000,base:1},
+{k:'play',n:'Contractor playbooks, 3 volumes',d:'Sales, bidding, install, troubleshooting.',lo:3000,hi:9000,base:1},
+{k:'mola',n:'Masters of Lighting Academy access',d:'Training and partner community.',lo:2500,hi:6000,base:1},
+{k:'email',n:'Email and social program',d:'Templates, sequences, monthly content.',lo:2000,hi:6000,base:0},
+{k:'kit',n:'Kit builder and counter quote tools',d:'Distributor ready ordering math.',lo:2000,hi:5000,base:0},
+{k:'map',n:'Service area and territory map',d:'County exclusivity shown live.',lo:800,hi:2500,base:0},
+{k:'host',n:'Hosting, security, maintenance, year one',d:'Managed, monitored, backed up.',lo:1200,hi:3600,base:1}
+];
+const $=id=>document.getElementById(id);
+const money=n=>'$'+Math.round(n).toLocaleString();
+function render(){$('items').innerHTML=ITEMS.map(i=>`<div class="item"><input type="checkbox" id="c_${i.k}" ${i.base?'checked':''} onchange="calc()"><label for="c_${i.k}"><div class="n">${i.n}</div><div class="d">${i.d}</div></label><div class="v"><b>${money((i.lo+i.hi)/2)}</b>${money(i.lo)} to ${money(i.hi)}</div></div>`).join('')}
+function preset(p){ITEMS.forEach(i=>$('c_'+i.k).checked=p==='all'?true:!!i.base);calc()}
+function fee(annual){const b=[[250000,.07],[250000,.06],[250000,.05],[250000,.04],[Infinity,.03]];let r=annual,f=0;for(const[w,p]of b){const x=Math.min(r,w);f+=x*p;r-=x;if(r<=0)break}return f}
+function calc(){
+let lo=0,hi=0,mid=0;ITEMS.forEach(i=>{if($('c_'+i.k).checked){lo+=i.lo;hi+=i.hi;mid+=(i.lo+i.hi)/2}});
+const rate=+$('rate').value||0,hrs=(+$('teach').value||0)+(+$('fix').value||0)+(+$('media').value||0);
+const time=hrs*rate;const gross=+$('gross').value||0;const delay=(+$('delay').value||0)*gross*((+$('share').value||0)/100);
+const total=mid+time+delay;
+$('total').textContent=money(total);$('range').textContent=`Range ${money(lo+time+delay)} to ${money(hi+time+delay)}`;
+$('kBuild').textContent=money(mid);$('kHours').textContent=hrs.toLocaleString()+' hrs';$('kTime').textContent=money(time);$('kDelay').textContent=money(delay);
+const annual=gross*12,f=fee(annual);$('kBuy').textContent=money(total+f/4);
+const yrs=f>0?total/f:0;$('kYears').textContent=yrs?yrs.toFixed(1)+' years at '+money(annual)+'/yr':'—';
+const t=total||1;$('b1').style.width=(mid/t*100)+'%';$('b2').style.width=(time/t*100)+'%';$('b3').style.width=(delay/t*100)+'%';
+$('note').textContent=`Ledger opens at ${money(total)}. Every fee dollar credits toward it in full. At ${money(annual)} gross the fee is ${money(f)} a year, so the contractor earns out in about ${yrs?yrs.toFixed(1):'—'} years with no add-ons. Each approved add-on is added at its rate card price on ship date.`;
+}
+render();calc();document.querySelectorAll('input[type=number]').forEach(e=>e.addEventListener('input',calc));
+</script></body></html>
