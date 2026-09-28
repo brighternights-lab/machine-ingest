@@ -35,6 +35,7 @@ def row(c,y,items,h=22):
 c=canvas.Canvas('Accelerate_Partner_Intake_Form.pdf',pagesize=(W,H)); c.setTitle('Accelerate Lighting Partners Partner Intake'); c.setAuthor('Accelerate Lighting Partners')
 # page 1
 bg(c); head(c,'LIGHTING PARTNER PROGRAM')
+c.drawImage('lockup.png',W-40-96,H-28-63,96,63,mask='auto')
 c.setFillColor(INK); c.setFont('Helvetica-Bold',24); c.drawString(40,H-88,'Partner intake')
 c.setFillColor(CYAN); c.setFont('Helvetica-Bold',24); c.drawString(40+c.stringWidth('Partner intake ','Helvetica-Bold',24),H-88,'form')
 c.setFillColor(MUTED); c.setFont('Helvetica',9); 
