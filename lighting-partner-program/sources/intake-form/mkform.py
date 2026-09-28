@@ -35,11 +35,11 @@ def row(c,y,items,h=22):
 c=canvas.Canvas('Accelerate_Partner_Intake_Form.pdf',pagesize=(W,H)); c.setTitle('Accelerate Lighting Partners Partner Intake'); c.setAuthor('Accelerate Lighting Partners')
 # page 1
 bg(c); head(c,'LIGHTING PARTNER PROGRAM')
-c.drawImage('lockup.png',W-40-96,H-28-63,96,63,mask='auto')
+c.drawImage('lockup_top.png',W-40-120,H-24-80,120,80,mask='auto'); c.setFillColor(INK); c.setFont('Helvetica-Bold',7.4); c.drawCentredString(W-40-60,H-24-80-9,'LIGHTING PARTNERS  LLC')
 c.setFillColor(INK); c.setFont('Helvetica-Bold',24); c.drawString(40,H-88,'Partner intake')
 c.setFillColor(CYAN); c.setFont('Helvetica-Bold',24); c.drawString(40+c.stringWidth('Partner intake ','Helvetica-Bold',24),H-88,'form')
 c.setFillColor(MUTED); c.setFont('Helvetica',9); 
-for i,l in enumerate(['Fill in what you have. Skip what you do not, we will help you get it. Save the file and email it to austen@brighternights.com.','Your site goes live within 14 days after we have everything on these two pages.']): c.drawString(40,H-108-i*12,l)
+for i,l in enumerate(['Fill in what you have. Skip what you do not, we will help you get it.','Save the file and email it to austen@brighternights.com.','Your site goes live within 14 days after we have everything here.']): c.drawString(40,H-106-i*11,l)
 y=H-150; sect(c,y,'Your contact'); y-=42
 row(c,y,[('contact_name','Your name',1),('contact_title','Title',1)]); y-=42
 row(c,y,[('contact_email','Email for notices',1),('contact_phone','Mobile phone',1)]); y-=36
@@ -53,7 +53,7 @@ row(c,y,[('county','Your county and state',1),('radius','Service radius, areas y
 y-=22; row(c,y,[('cities','Cities and towns you serve (used for your city pages)',1)],h=44); y-=44
 row(c,y,[('distributor','Your distributor',1),('rep','Distributor rep contact',1)]); y-=36
 sect(c,y,'Brand'); y-=42
-row(c,y,[('logo','Logo files, share link',1),('colors','Brand colors and fonts',1)]); y-=42
+row(c,y,[('logo','Logo files, share link, or NONE and we make one',1),('colors','Brand colors and fonts',1)]); y-=42
 row(c,y,[('tagline','Tagline',1),('voice','How you talk to customers (friendly, premium, no nonsense)',1)]); y-=8
 foot(c,1); c.showPage()
 # page 2
@@ -64,10 +64,11 @@ row(c,y,[('deposit','Deposit amount for booking',1),('financing','Financing part
 sect(c,y,'Photos, video, and proof'); y-=42
 row(c,y,[('photos','Best install photos and video, share link',1),('team','Team photos and short bios, share link',1)]); y-=42
 row(c,y,[('reviews','Reviews and testimonials, links',1),('badges','Awards and badges to show',1)]); y-=36
-sect(c,y,'Accounts we need access to'); y-=42
-row(c,y,[('registrar','Domain registrar, if you own one',1),('gbp','Google Business Profile email',1)]); y-=42
-row(c,y,[('ga','Google Analytics and Search Console email',1),('ads','Google Ads and Meta ad accounts',1)]); y-=42
-row(c,y,[('trackphone','Phone number for call tracking and texts',1),('calendar','Calendar and payment processor for deposits',1)]); y-=36
+sect(c,y,'Your online presence today'); c.setFillColor(MUTED); c.setFont('Helvetica',7.6); c.drawString(40,y-17,'Most partners start with nothing. Write NONE and we build the website and create every account in your name.'); y-=58
+row(c,y,[('website','Website address, or NONE',1),('domain','Domain you own or want us to register',1)]); y-=42
+row(c,y,[('gbp','Google Business Profile link, or NONE',1),('social','Facebook and Instagram pages, or NONE',1)]); y-=42
+row(c,y,[('analytics','Analytics, Search Console, and ad accounts, or NONE',1),('trackphone','Phone number for call tracking and texts',1)]); y-=42
+row(c,y,[('calendar','Calendar and payment processor for deposits, or NONE',1)]); y-=36
 sect(c,y,'Anything else'); y-=80
 row(c,y,[('notes','Notes, questions, special requests',1)],h=60); y-=24
 c.setStrokeColor(MAG); c.setLineWidth(1.2); c.roundRect(40,y-52,W-80,52,8,fill=0,stroke=1)
