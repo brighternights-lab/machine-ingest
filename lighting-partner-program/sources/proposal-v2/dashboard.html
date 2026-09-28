@@ -1,0 +1,156 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2)}
+:root{--teal:#00A9B5;--cyan:#5BE3DD;--mag:#EC008C;--pink:#FF4FB3;--orange:#FF7A1A;--ground:#0B0E18;--card:#111726;--ink:#EAF2F8;--muted:#9FB4C7;--line:rgba(159,180,199,.18)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;background:var(--ground);font-family:Inter,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:980px}
+.side{background:#0A0D16;border-right:1px solid var(--line);padding:22px 18px}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.brand .lg{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#00A9B5,#EC008C)}
+.brand b{font-size:13px;display:block;line-height:1.2}.brand span{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;color:var(--muted);margin-bottom:2px}
+.nav a.on{color:#fff;border:1px solid rgba(91,227,221,.5);background:rgba(91,227,221,.06)}
+.nav i{width:14px;height:14px;border-radius:4px;border:1.3px solid currentColor;display:inline-block}
+.nav .h{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:16px 10px 6px;opacity:.7}
+.main{padding:22px 26px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.top h1{font-size:20px;font-weight:800;letter-spacing:-.01em}
+.top .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.pill{display:inline-block;border:1.2px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:4px 11px;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.pill.pink{border-color:var(--mag);color:var(--pink)} .pill.orange{border-color:var(--orange);color:var(--orange)} .pill.muted{border-color:var(--muted);color:var(--muted)}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(5,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
+.card.glow{border-color:rgba(236,0,140,.5);box-shadow:0 0 0 1px rgba(236,0,140,.12),0 0 30px rgba(236,0,140,.12)}
+.card.teal{border-color:rgba(91,227,221,.5);box-shadow:0 0 0 1px rgba(91,227,221,.1),0 0 30px rgba(0,169,181,.14)}
+.k .l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.k .n{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:6px;line-height:1}
+.k .d{font-size:11px;color:var(--muted);margin-top:6px}
+.k .d b{color:var(--cyan);font-weight:600}
+.ct{font-size:12.5px;font-weight:700;color:#fff}
+.cs{font-size:11px;color:var(--muted);margin-top:2px}
+.row2{grid-template-columns:1.5fr 1fr;margin-top:14px}
+.row3{grid-template-columns:1fr 1fr 1fr;margin-top:14px}
+svg text{font-family:Inter,sans-serif}
+.bar{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;font-size:12px;padding:6px 0}
+.bar .tr{height:6px;border-radius:3px;border:1px solid var(--line);overflow:hidden}
+.bar .tr div{height:100%;border-radius:3px;background:linear-gradient(90deg,#00A9B5,#5BE3DD)}
+.bar .v{color:var(--muted);font-size:11px;width:36px;text-align:right}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+th{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 6px;border-bottom:1px solid rgba(91,227,221,.4);font-weight:600}
+td{padding:8px 6px;border-bottom:1px solid var(--line)}
+td.r,th.r{text-align:right}
+.ledger{display:grid;grid-template-columns:1fr auto;align-items:end;gap:10px}
+.ledger .big{font-size:30px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.meter{height:10px;border-radius:5px;border:1px solid rgba(236,0,140,.5);margin-top:12px;overflow:hidden}
+.meter div{height:100%;width:29%;background:linear-gradient(90deg,#EC008C,#FF4FB3)}
+.legend{display:flex;gap:14px;font-size:11px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.cm{border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:11.5px;margin-top:8px;color:var(--muted)}
+.cm b{color:#fff}.cm .a{color:var(--cyan)}
+</style></head><body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="lg"></div><div><b>Coastal Roof &amp; Light</b><span>Partner dashboard</span></div></div>
+    <div class="nav">
+      <a class="on"><i></i>Overview</a>
+      <a><i></i>Build progress</a>
+      <a><i></i>Ledger and buyout</a>
+      <a><i></i>Leads and calls</a>
+      <a><i></i>Ads</a>
+      <a><i></i>Rankings</a>
+      <a><i></i>Reviews</a>
+      <a><i></i>Comments</a>
+      <div class="h">Reports</div>
+      <a><i></i>Weekly report</a>
+      <a><i></i>Revenue report</a>
+      <a><i></i>Invoices</a>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1>Overview</h1><div class="sub">Seminole County, FL · Week of Nov 3, 2026 · Month 6 after launch</div></div>
+      <div style="display:flex;gap:8px"><span class="pill muted">Last 30 days</span><span class="pill">1 year term</span><span class="pill pink">Tier 1 · 7%</span></div>
+    </div>
+
+    <div class="grid kpis">
+      <div class="card k"><div class="l">Leads</div><div class="n">47</div><div class="d"><b>+31%</b> vs prior 30 days</div></div>
+      <div class="card k"><div class="l">Booked jobs</div><div class="n">12</div><div class="d"><b>25.5%</b> lead to booked</div></div>
+      <div class="card k"><div class="l">Lighting revenue</div><div class="n">$58,400</div><div class="d">Reported Oct · <b>$4,867</b> avg job</div></div>
+      <div class="card k"><div class="l">Cost per lead</div><div class="n">$41</div><div class="d">Ads only · market avg <b>$144</b></div></div>
+      <div class="card k"><div class="l">Google reviews</div><div class="n">38 <span style="font-size:14px;color:var(--cyan)">4.9★</span></div><div class="d"><b>+9</b> this month</div></div>
+    </div>
+
+    <div class="grid row2">
+      <div class="card">
+        <div class="ct">Leads by source, last 12 weeks</div><div class="cs">Organic search, paid ads, and direct. Site lead response averaged 42 seconds.</div>
+        <svg viewBox="0 0 760 210" width="100%" style="display:block;margin-top:10px">
+          <g stroke="rgba(159,180,199,.14)"><path d="M40 170H750M40 130H750M40 90H750M40 50H750"/></g>
+          <g font-size="10" fill="#9FB4C7"><text x="10" y="174">0</text><text x="10" y="134">10</text><text x="10" y="94">20</text><text x="10" y="54">30</text></g>
+          <g font-size="10" fill="#9FB4C7" text-anchor="middle"><text x="70" y="192">Aug 11</text><text x="200" y="192">Sep 1</text><text x="330" y="192">Sep 22</text><text x="460" y="192">Oct 13</text><text x="590" y="192">Nov 3</text></g>
+          <path d="M70 158 L135 150 L200 142 L265 138 L330 126 L395 118 L460 104 L525 96 L590 84 L655 72 L720 62" fill="none" stroke="#5BE3DD" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M70 166 L135 160 L200 152 L265 148 L330 144 L395 136 L460 130 L525 122 L590 118 L655 110 L720 104" fill="none" stroke="#EC008C" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M70 168 L135 166 L200 165 L265 163 L330 162 L395 160 L460 158 L525 157 L590 155 L655 152 L720 150" fill="none" stroke="#9FB4C7" stroke-width="2" stroke-dasharray="4 3" stroke-linejoin="round"/>
+          <circle cx="720" cy="62" r="4" fill="#5BE3DD" stroke="#111726" stroke-width="2"/><circle cx="720" cy="104" r="4" fill="#EC008C" stroke="#111726" stroke-width="2"/><circle cx="720" cy="150" r="4" fill="#9FB4C7" stroke="#111726" stroke-width="2"/>
+          <g font-size="11" font-weight="600" fill="#EAF2F8"><text x="730" y="66">27</text><text x="730" y="108">16</text><text x="730" y="154">5</text></g>
+        </svg>
+        <div class="legend"><span><i style="background:#5BE3DD"></i>Organic search</span><span><i style="background:#EC008C"></i>Paid ads</span><span><i style="background:#9FB4C7"></i>Direct and referral</span></div>
+      </div>
+      <div class="card glow">
+        <div class="ct">Ledger and buyout</div><div class="cs">70% of every fee dollar credits the ledger</div>
+        <div class="ledger" style="margin-top:12px"><div><div class="l" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">Credits so far</div><div class="big">$23,240</div></div><div style="text-align:right;font-size:12px;color:var(--muted)">of <b style="color:#fff">$80,000</b><br>29% owned</div></div>
+        <div class="meter"><div></div></div>
+        <table style="margin-top:12px">
+          <tr><td>Fees paid to date</td><td class="r">$33,200</td></tr>
+          <tr><td>Spent on your ads</td><td class="r">$9,960</td></tr>
+          <tr><td>Buyout price today</td><td class="r" style="color:var(--pink);font-weight:700">$68,610</td></tr>
+          <tr><td>Projected payoff at current pace</td><td class="r">Sep 2030</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid row3">
+      <div class="card">
+        <div class="ct">Ad spend and results</div><div class="cs">Google Search and Meta, your accounts</div>
+        <table>
+          <tr><th>Channel</th><th class="r">Spend</th><th class="r">Clicks</th><th class="r">Leads</th><th class="r">CPL</th></tr>
+          <tr><td>Google Search</td><td class="r">$1,240</td><td class="r">418</td><td class="r">19</td><td class="r">$65</td></tr>
+          <tr><td>Meta</td><td class="r">$680</td><td class="r">1,930</td><td class="r">9</td><td class="r">$76</td></tr>
+          <tr><td>Local Services</td><td class="r">$410</td><td class="r">62</td><td class="r">11</td><td class="r">$37</td></tr>
+          <tr><td style="font-weight:700;color:#fff">Total</td><td class="r" style="font-weight:700;color:#fff">$2,330</td><td class="r">2,410</td><td class="r" style="font-weight:700;color:#fff">39</td><td class="r" style="color:var(--cyan);font-weight:700">$60</td></tr>
+        </table>
+        <div class="cs" style="margin-top:8px">$1,890 came from your 30% reinvestment. $440 from your match.</div>
+      </div>
+      <div class="card">
+        <div class="ct">Rankings, Seminole County</div><div class="cs">Google position, up from launch</div>
+        <div style="margin-top:8px">
+          <div class="bar"><span>permanent christmas lights sanford</span><div class="tr"><div style="width:92%"></div></div><span class="v">#2</span></div>
+          <div class="bar"><span>permanent holiday lighting</span><div class="tr"><div style="width:84%"></div></div><span class="v">#3</span></div>
+          <div class="bar"><span>roofline lighting near me</span><div class="tr"><div style="width:84%"></div></div><span class="v">#3</span></div>
+          <div class="bar"><span>christmas light installation</span><div class="tr"><div style="width:62%"></div></div><span class="v">#6</span></div>
+          <div class="bar"><span>lake mary outdoor lighting</span><div class="tr"><div style="width:55%"></div></div><span class="v">#7</span></div>
+          <div class="bar"><span>oviedo permanent lights</span><div class="tr"><div style="width:40%"></div></div><span class="v">#11</span></div>
+        </div>
+        <div class="cs" style="margin-top:6px">1,840 organic visits this month. 71% on mobile.</div>
+      </div>
+      <div class="card teal">
+        <div class="ct">What we are working on</div><div class="cs">Approve, comment, or request a change</div>
+        <div style="margin-top:8px">
+          <div class="bar" style="grid-template-columns:1fr auto"><span>Oviedo city page</span><span class="pill" style="font-size:9px;padding:2px 8px">Approved</span></div>
+          <div class="bar" style="grid-template-columns:1fr auto"><span>Halloween use case page</span><span class="pill orange" style="font-size:9px;padding:2px 8px">In review</span></div>
+          <div class="bar" style="grid-template-columns:1fr auto"><span>Game day photo set</span><span class="pill pink" style="font-size:9px;padding:2px 8px">Building</span></div>
+          <div class="bar" style="grid-template-columns:1fr auto"><span>Blog: permanent vs seasonal cost</span><span class="pill pink" style="font-size:9px;padding:2px 8px">Building</span></div>
+          <div class="bar" style="grid-template-columns:1fr auto"><span>Winter Park city page</span><span class="pill muted" style="font-size:9px;padding:2px 8px">Queued</span></div>
+        </div>
+        <div class="cm"><b>Your comment</b> · Can we add the HOA letter to the Halloween page? <span class="a">Reply from Austen, 1 hr ago · Added and live.</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>
