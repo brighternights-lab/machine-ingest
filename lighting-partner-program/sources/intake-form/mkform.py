@@ -24,14 +24,14 @@ def head(c,t):
 def sect(c,y,t):
     c.setFillColor(PINK); c.setFont('Helvetica-Bold',8.5); c.drawString(40,y,t.upper())
     c.setStrokeColor(HexColor('#2A3350')); c.setLineWidth(.6); c.line(40,y-5,W-40,y-5)
-def fld(c,name,label,x,y,w,h=22,multi=False):
+def fld(c,name,label,x,y,w,h=22,multi=False,font='Helvetica',size=9):
     c.setFillColor(MUTED); c.setFont('Helvetica',7.3); c.drawString(x,y+h+3,label)
-    c.acroForm.textfield(name=name,x=x,y=y,width=w,height=h,borderColor=TEAL,fillColor=CARD,textColor=INK,fontName='Helvetica',fontSize=9,borderWidth=1,forceBorder=True,fieldFlags='multiline' if multi else '',maxlen=500)
-def row(c,y,items,h=22):
+    c.acroForm.textfield(name=name,x=x,y=y,width=w,height=h,borderColor=TEAL,fillColor=CARD,textColor=INK,fontName=font,fontSize=size,borderWidth=1,forceBorder=True,fieldFlags='multiline' if multi else '',maxlen=500)
+def row(c,y,items,h=22,font='Helvetica',size=9):
     tot=W-80; gap=10; n=len(items); x=40
     ws=[it[2] for it in items]; s=sum(ws); ws=[(tot-gap*(n-1))*w/s for w in ws]
     for it,w in zip(items,ws):
-        fld(c,it[0],it[1],x,y,w,h,multi=(h>30)); x+=w+gap
+        fld(c,it[0],it[1],x,y,w,h,multi=(h>30),font=font,size=size); x+=w+gap
 c=canvas.Canvas('Accelerate_Partner_Intake_Form.pdf',pagesize=(W,H)); c.setTitle('Accelerate Lighting Partners Partner Intake'); c.setAuthor('Accelerate Lighting Partners')
 # page 1
 bg(c); head(c,'LIGHTING PARTNER PROGRAM')
@@ -60,20 +60,23 @@ foot(c,1); c.showPage()
 bg(c); head(c,'LIGHTING PARTNER PROGRAM')
 y=H-90; sect(c,y,'Pricing for your instant estimate'); y-=42
 row(c,y,[('price_ft','Price per linear foot by system (roofline, landscape, other)',2),('minjob','Minimum job size',1)]); y-=42
-row(c,y,[('deposit','Deposit amount for booking',1),('financing','Financing partner, if any',1),('warranty','Warranty and guarantee you offer',1)]); y-=36
+row(c,y,[('deposit','Deposit amount for booking',1),('financing','Financing partner, if any',1),('warranty','Warranty and guarantee you offer',1)]); y-=30
 sect(c,y,'Photos, video, and proof'); y-=42
 row(c,y,[('photos','Best install photos and video, share link',1),('team','Team photos and short bios, share link',1)]); y-=42
-row(c,y,[('reviews','Reviews and testimonials, links',1),('badges','Awards and badges to show',1)]); y-=36
+row(c,y,[('reviews','Reviews and testimonials, links',1),('badges','Awards and badges to show',1)]); y-=30
 sect(c,y,'Your online presence today'); c.setFillColor(MUTED); c.setFont('Helvetica',7.6); c.drawString(40,y-17,'Most partners start with nothing. Write NONE and we build the website and create every account in your name.'); y-=58
 row(c,y,[('website','Website address, or NONE',1),('domain','Domain you own or want us to register',1)]); y-=42
 row(c,y,[('gbp','Google Business Profile link, or NONE',1),('social','Facebook and Instagram pages, or NONE',1)]); y-=42
 row(c,y,[('analytics','Analytics, Search Console, and ad accounts, or NONE',1),('trackphone','Phone number for call tracking and texts',1)]); y-=42
-row(c,y,[('calendar','Calendar and payment processor for deposits, or NONE',1)]); y-=36
-sect(c,y,'Anything else'); y-=80
-row(c,y,[('notes','Notes, questions, special requests',1)],h=60); y-=24
-c.setStrokeColor(MAG); c.setLineWidth(1.2); c.roundRect(40,y-52,W-80,52,8,fill=0,stroke=1)
-c.setFillColor(PINK); c.setFont('Helvetica-Bold',8); c.drawString(54,y-16,'HOW TO SEND IT')
-c.setFillColor(INK); c.setFont('Helvetica',9)
-c.drawString(54,y-30,'Save this file and email it, with your files and links, to austen@brighternights.com.')
-c.drawString(54,y-42,'We build from what you send. The 14 day clock starts when the last item arrives.')
+row(c,y,[('calendar','Calendar and payment processor for deposits, or NONE',1)]); y-=30
+sect(c,y,'Anything else'); y-=60
+row(c,y,[('notes','Notes, questions, special requests',1)],h=36); y-=40
+sect(c,y,'Authorization and signature'); c.setFillColor(MUTED); c.setFont('Helvetica',7.6)
+c.drawString(40,y-16,'I confirm the information above is accurate. I authorize Accelerate Lighting Partners to create and manage websites, domains, and accounts in my')
+c.drawString(40,y-26,"company's name to deliver the Lighting Partner Program. Type your full name to sign.")
+y-=72
+row(c,y,[('signature','Signature, type your full legal name',2),('sig_title','Title',1),('sig_date','Date',1)],h=26,font='Helvetica-Oblique',size=12); y-=30
+c.setFillColor(PINK); c.setFont('Helvetica-Bold',7.6); c.drawString(40,66,'HOW TO SEND IT')
+c.setFillColor(INK); c.setFont('Helvetica',8.6)
+c.drawString(40,54,'Save this file and email it, with your files and links, to austen@brighternights.com. The 14 day clock starts when the last item arrives.')
 foot(c,2); c.showPage(); c.save()
