@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lighting Partner Program Proposal</title>
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/inter-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2) format("woff2")}
+:root{
+  --teal:#00A9B5;--cyan:#5BE3DD;--mag:#EC008C;--pink:#E3056B;--orange:#FF7A1A;
+  --ground:#0B0E18;--card:#111726;--ink:#EAF2F8;--muted:#9FB4C7;--line:rgba(159,180,199,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ground);color:var(--ink);font-family:Inter,Helvetica,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:8.5in 11in;margin:0}
+.page{position:relative;width:8.5in;height:11in;overflow:hidden;page-break-after:always;
+  background:
+    radial-gradient(60% 40% at 100% 0%,rgba(236,0,140,.22),transparent 70%),
+    radial-gradient(55% 45% at 0% 100%,rgba(0,169,181,.20),transparent 70%),
+    linear-gradient(160deg,#141B33 0%,#0B0E18 55%,#07090F 100%);}
+.page:last-child{page-break-after:auto}
+.pad{position:absolute;left:.7in;right:.7in;top:.65in;bottom:.6in}
+.gbar{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00A9B5,#5BE3DD 35%,#EC008C 70%,#FF7A1A)}
+.foot{position:absolute;left:.7in;right:.7in;bottom:.32in;display:flex;justify-content:space-between;font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.foot b{color:var(--cyan);font-weight:600}
+h1{font-size:34pt;line-height:1.05;font-weight:800;letter-spacing:-.02em}
+h2{font-size:21pt;line-height:1.1;font-weight:800;letter-spacing:-.015em;margin-bottom:8pt}
+h3{font-size:10.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:14pt 0 6pt}
+p{font-size:10pt;line-height:1.5;color:var(--ink)}
+p.lead{font-size:11.5pt;line-height:1.5;color:#D3DEE8}
+p.muted{color:var(--muted);font-size:8.6pt;line-height:1.45}
+.grad{color:#5BE3DD}
+.pill{display:inline-block;border:1.2px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:3.5pt 10pt;font-size:8pt;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(11,14,24,.55)}
+.pill.pink{border-color:var(--mag);color:#FF4FB3}
+.pill.orange{border-color:var(--orange);color:var(--orange)}
+.pills{display:flex;gap:6pt;flex-wrap:wrap}
+.card{border:1px solid var(--line);border-radius:10pt;padding:9pt 10pt;background:rgba(17,23,38,.55)}
+.card.glow{border-color:rgba(236,0,140,.55);box-shadow:0 0 0 1px rgba(236,0,140,.15),0 0 28px rgba(236,0,140,.14)}
+.card.tealglow{border-color:rgba(91,227,221,.55);box-shadow:0 0 0 1px rgba(91,227,221,.12),0 0 28px rgba(0,169,181,.16)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9pt}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9pt}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8pt}
+.feat h4{font-size:10.5pt;font-weight:700;margin:6pt 0 3pt;color:#fff}
+.feat p{font-size:8.4pt;line-height:1.4;color:var(--muted)}
+.ico{width:22pt;height:22pt;border-radius:6pt;border:1.2px solid var(--cyan);display:flex;align-items:center;justify-content:center}
+.ico svg{width:12pt;height:12pt;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ico.pink{border-color:var(--mag)} .ico.pink svg{stroke:#FF4FB3}
+.ico.orange{border-color:var(--orange)} .ico.orange svg{stroke:var(--orange)}
+table{width:100%;border-collapse:collapse;font-size:9.6pt}
+th{font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:5pt 8pt;border-bottom:1.2px solid rgba(91,227,221,.5);font-weight:600}
+td{padding:5.5pt 8pt;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4}
+td.r,th.r{text-align:right}
+td.k{color:var(--muted);width:.95in;font-weight:600;font-size:9pt}
+tr.total td{border-top:1.2px solid rgba(236,0,140,.6);border-bottom:none;font-weight:700;color:#fff;padding-top:8pt}
+tr.total td.r{color:#FF4FB3;font-size:12pt}
+.stat{border:1.2px solid var(--line);border-radius:10pt;padding:10pt 11pt;background:rgba(17,23,38,.5)}
+.stat .n{font-size:20pt;font-weight:800;letter-spacing:-.02em;line-height:1}
+.stat .l{font-size:8pt;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4pt;font-weight:600}
+.stat .s{font-size:8.6pt;color:#C8D4DF;margin-top:3pt}
+.step{display:grid;grid-template-columns:22pt 1fr;gap:8pt;align-items:start;padding:6pt 0;border-bottom:1px solid var(--line)}
+.step .n{width:20pt;height:20pt;border-radius:50%;border:1.2px solid var(--mag);color:#FF4FB3;font-weight:700;font-size:9.5pt;display:flex;align-items:center;justify-content:center}
+.step h5{font-size:10pt;font-weight:700;color:#fff}
+.step p{font-size:8.8pt;color:var(--muted);line-height:1.4}
+.photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6pt}
+.photos div{height:.9in;border-radius:8pt;background-size:cover;background-position:center;border:1px solid var(--line)}
+.hr{height:1px;background:linear-gradient(90deg,rgba(91,227,221,.6),rgba(236,0,140,.6),transparent);margin:10pt 0}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:12pt}
+.q h5{font-size:9.6pt;font-weight:700;color:#fff;margin-top:8pt}
+.q p{font-size:8.8pt;color:var(--muted);line-height:1.45}
+.tl{position:relative;padding-left:14pt;border-left:1.2px solid rgba(91,227,221,.45);margin-top:6pt}
+.tl div{position:relative;padding:2pt 0 6pt}
+.tl div:before{content:"";position:absolute;left:-17.6pt;top:6pt;width:6pt;height:6pt;border-radius:50%;border:1.2px solid var(--cyan);background:var(--ground)}
+.tl b{color:#fff;font-size:9.4pt}
+.tl span{display:block;font-size:8.6pt;color:var(--muted);line-height:1.4}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 COVER -->
+<section class="page" style="background:#07090F">
+  <div style="position:absolute;left:0;right:0;top:0;height:6.3in;background:url(img/hero.jpg) center/cover;"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:6.3in;background:linear-gradient(180deg,rgba(7,9,15,.35) 0%,rgba(7,9,15,.15) 40%,rgba(11,14,24,.92) 88%,#0B0E18 100%)"></div>
+  <div style="position:absolute;left:0;right:0;top:5.9in;bottom:0;background:radial-gradient(70% 55% at 85% 100%,rgba(236,0,140,.28),transparent 70%),radial-gradient(60% 50% at 0% 60%,rgba(0,169,181,.26),transparent 70%),linear-gradient(180deg,#0B0E18,#07090F)"></div>
+  <div class="gbar"></div>
+  <div style="position:absolute;left:.75in;top:.7in;display:flex;align-items:center;gap:10pt">
+    <img src="img/logo.png" style="height:.78in">
+    <div style="font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:600;line-height:1.5">Brighter Nights<br><span style="color:var(--cyan)">Lighting Technologies</span></div>
+  </div>
+  <div style="position:absolute;left:.75in;right:.75in;top:5.05in">
+    <span class="pill pink">Lighting Partner Program</span>
+    <h1 style="margin-top:12pt;color:#fff">You run the jobs.</h1><svg viewBox="0 0 400 46" width="5.4in" style="display:block;margin-top:2pt;overflow:visible"><defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#5BE3DD"/><stop offset="1" stop-color="#EC008C"/></linearGradient></defs><text x="0" y="38" font-family="Inter" font-weight="800" font-size="40" letter-spacing="-0.8" fill="url(#hg)">We run your growth.</text></svg>
+    <p class="lead" style="margin-top:12pt;max-width:5.6in">A homeowner facing lighting website, instant estimates, online booking, and lead tracking, built under your brand and paid for as a sliding share of what you actually earn. Every fee dollar buys you the site outright.</p>
+    <div class="pills" style="margin-top:16pt">
+      <span class="pill">10 founding seats</span>
+      <span class="pill">One partner per county</span>
+      <span class="pill orange">7% sliding down to 3%</span>
+      <span class="pill pink">100% of fees credit ownership</span>
+    </div>
+  </div>
+  <div style="position:absolute;left:.75in;right:.75in;bottom:.55in;display:flex;justify-content:space-between;align-items:flex-end">
+    <div style="font-size:8.5pt;color:var(--muted);line-height:1.6">Prepared for prospective founding partners<br>September 2026 &nbsp;·&nbsp; Contractor proposal v2</div>
+    <div style="font-size:8.5pt;color:var(--muted);text-align:right;line-height:1.6">Sanford, Florida<br>brighternights.com &nbsp;·&nbsp; 407-469-7093</div>
+  </div>
+</section>
+
+<!-- PAGE 2 WHAT YOU GET -->
+<section class="page">
+  <div class="gbar"></div>
+  <div class="pad">
+    <span class="pill">What this is</span>
+    <h2 style="margin-top:8pt">A lighting business that sells itself online, <span class="grad">without you building it.</span></h2>
+    <p class="lead">Brighter Nights builds and runs the online side of your lighting business, under your brand, in your exclusive county. Your site is a stripped down, homeowner only version of the system we run at brighternights.com. Only the tools a homeowner uses, nothing you have to manage. You focus on the work and pay only as a percentage of what you earn.</p>
+
+    <h3>What you get</h3>
+    <div class="grid4">
+      <div class="card feat"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h4>Your homeowner site</h4><p>8 to 10 custom pages under your brand. Roofline, landscape, and seasonal lighting pages, galleries, reviews, and service area pages built to convert on a phone.</p></div>
+      <div class="card feat"><div class="ico pink"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></div><h4>Instant estimates</h4><p>Homeowners price their own roofline or landscape job in under a minute using your pricing. Every estimate lands in your inbox with their contact details.</p></div>
+      <div class="card feat"><div class="ico orange"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h4>Online booking</h4><p>Site visits and installs booked straight into your calendar with a card deposit collected up front. No phone tag, no no shows.</p></div>
+      <div class="card feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-7"/></svg></div><h4>Lead and call tracking</h4><p>Every call, form, estimate, and booking is tracked to its source so you know exactly which dollar brought which job.</p></div>
+    </div>
+    <div class="grid4" style="margin-top:8pt">
+      <div class="card feat"><div class="ico pink"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4>Your build dashboard</h4><p>Watch your site come together in real time. See what we are working on, leave comments, suggest changes, and approve pages before they go live.</p></div>
+      <div class="card feat"><div class="ico orange"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg></div><h4>Photo and video library</h4><p>Licensed use of thousands of real install photos and videos so your site looks like a company that has been doing this for years.</p></div>
+      <div class="card feat"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></div><h4>Local SEO foundation</h4><p>Service and city pages, Google Business Profile, citations, and technical setup so you show up when a homeowner in your county searches.</p></div>
+      <div class="card feat"><div class="ico pink"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M17 4a3.5 3.5 0 010 7M22 20c0-3-1.5-5-4-5.5"/></svg></div><h4>Partner support</h4><p>Weekly time with your partner manager, a private partner community, and bidding and install help when you need it.</p></div>
+    </div>
+
+    <div class="photos" style="margin-top:12pt">
+      <div style="background-image:url(img/house-hw1-1200.jpg)"></div>
+      <div style="background-image:url(img/dock-hw-1200.jpg)"></div>
+      <div style="background-image:url(img/pool-cage-hw-1200.jpg)"></div>
+    </div>
+    <p class="muted" style="margin-top:5pt">Real installs from the shared library. Every partner site launches with a full gallery on day one.</p>
+
+    <div class="card tealglow" style="margin-top:9pt;display:grid;grid-template-columns:auto 1fr;gap:12pt;align-items:center">
+      <div style="font-size:20pt;font-weight:800;letter-spacing:-.02em" class="grad">3 to 5 days</div>
+      <p style="font-size:9.4pt;color:#D3DEE8">Product is supplied through distribution and stocked nationwide. You never carry inventory to get started.</p>
+    </div>
+  </div>
+  <div class="foot"><span><b>Brighter Nights</b> · Lighting Partner Program</span><span>Contractor proposal · 2</span></div>
+</section>
+
+<!-- PAGE 3 HOW IT IS PAID FOR -->
+<section class="page">
+  <div class="gbar"></div>
+  <div class="pad">
+    <span class="pill orange">How it is paid for</span>
+    <h2 style="margin-top:8pt">No upfront bill. <span class="grad">The percentage falls as you grow.</span></h2>
+    <p class="lead">You pay a sliding percentage of your gross lighting revenue. Each tier only applies to the dollars inside it, the same way tax brackets work, so growing never bumps your whole bill into a higher rate.</p>
+
+    <div class="two" style="margin-top:14pt">
+      <div>
+        <table>
+          <tr><th>Your annual gross lighting revenue</th><th class="r">Fee on that portion</th></tr>
+          <tr><td>First $250,000</td><td class="r" style="color:var(--orange);font-weight:700">7%</td></tr>
+          <tr><td>$250,000 to $500,000</td><td class="r" style="color:var(--orange);font-weight:700">6%</td></tr>
+          <tr><td>$500,000 to $750,000</td><td class="r" style="color:var(--orange);font-weight:700">5%</td></tr>
+          <tr><td>$750,000 to $1,000,000</td><td class="r" style="color:var(--orange);font-weight:700">4%</td></tr>
+          <tr><td>Above $1,000,000</td><td class="r" style="color:var(--orange);font-weight:700">3%</td></tr>
+        </table>
+        <p class="muted" style="margin-top:6pt">Reported monthly, verified against your distributor purchases. Lighting revenue only. Your other trades are never touched.</p>
+      </div>
+      <div>
+        <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6pt">Blended rate falls as you grow</div>
+        <svg viewBox="0 0 300 150" width="100%" style="display:block">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BE3DD"/><stop offset="1" stop-color="#EC008C"/></linearGradient></defs>
+          <g font-family="Inter" font-size="9" fill="#9FB4C7">
+            <text x="0" y="146">$250k</text><text x="62" y="146">$500k</text><text x="124" y="146">$750k</text><text x="186" y="146">$1M</text><text x="252" y="146">$1.5M</text>
+          </g>
+          <g fill="none" stroke="rgba(159,180,199,.22)"><path d="M0 132H300M0 100H300M0 68H300M0 36H300"/></g>
+          <g fill="none" stroke="url(#g1)" stroke-width="1.5">
+            <rect x="8" y="20" width="34" height="112" rx="4"/>
+            <rect x="70" y="28" width="34" height="104" rx="4"/>
+            <rect x="132" y="42" width="34" height="90" rx="4"/>
+            <rect x="194" y="52" width="34" height="80" rx="4"/>
+            <rect x="256" y="72" width="34" height="60" rx="4"/>
+          </g>
+          <g font-family="Inter" font-size="10" font-weight="700" fill="#EAF2F8" text-anchor="middle">
+            <text x="25" y="14">7.0%</text><text x="87" y="22">6.5%</text><text x="149" y="36">6.0%</text><text x="211" y="46">5.5%</text><text x="273" y="66">4.7%</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <h3>What that looks like in dollars</h3>
+    <div class="grid3">
+      <div class="stat"><div class="n grad">$32,500</div><div class="l">At $500,000 gross</div><div class="s">6.5% blended. About $2,700 a month.</div></div>
+      <div class="stat"><div class="n grad">$55,000</div><div class="l">At $1,000,000 gross</div><div class="s">5.5% blended. About $4,600 a month.</div></div>
+      <div class="stat"><div class="n grad">$70,000</div><div class="l">At $1,500,000 gross</div><div class="s">4.7% blended. About $5,800 a month.</div></div>
+    </div>
+
+    <div class="card glow" style="margin-top:14pt">
+      <div class="grid2" style="align-items:center">
+        <div>
+          <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:#FF4FB3;font-weight:600">We put money back in</div>
+          <div style="font-size:15pt;font-weight:800;color:#fff;margin-top:3pt;line-height:1.15">30% of our fee goes straight into advertising for your business</div>
+        </div>
+        <p style="font-size:9.4pt;color:#D3DEE8">We ask you to match that 30% into your own local marketing. At $500,000 gross that is roughly $9,750 from us and $9,750 from you, spent on ads that ring your phone, every year.</p>
+      </div>
+    </div>
+
+    <h3>What the fee is not</h3>
+    <div class="grid3">
+      <div class="card feat"><h4 style="margin-top:0">Not a franchise fee</h4><p>You keep your company name, your brand, and your customers. We never own any part of your business.</p></div>
+      <div class="card feat"><h4 style="margin-top:0">Not a cut of your other work</h4><p>Only lighting revenue counts. If you also do gutters, roofing, or pavers, that money is yours alone.</p></div>
+      <div class="card feat"><h4 style="margin-top:0">Not money that disappears</h4><p>Every fee dollar credits toward owning your site. The next page shows how.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Brighter Nights</b> · Lighting Partner Program</span><span>Contractor proposal · 3</span></div>
+</section>
+
+<!-- PAGE 4 VALUE AND OWNERSHIP -->
+<section class="page">
+  <div class="gbar"></div>
+  <div class="pad">
+    <span class="pill pink">Owning your site</span>
+    <h2 style="margin-top:8pt">Your site has a real, stated value. <span class="grad">Every fee dollar buys it.</span></h2>
+    <p class="lead">Every partner site carries a stated dollar value. We call it the ledger. It is what it would cost you to have the same thing built by an agency at 2026 published rates, and nothing more.</p>
+
+    <div class="two" style="margin-top:12pt">
+      <div>
+        <table>
+          <tr><th>What is on the ledger at launch</th><th class="r">Market value</th></tr>
+          <tr><td><b>Custom homeowner site</b><br><span style="color:var(--muted);font-size:8.6pt">8 to 10 pages, your brand, galleries, mobile first, conversion focused</span></td><td class="r">$12,000</td></tr>
+          <tr><td><b>Instant estimate tool</b><br><span style="color:var(--muted);font-size:8.6pt">Custom calculator running your lighting pricing</span></td><td class="r">$6,000</td></tr>
+          <tr><td><b>Online booking with deposits</b><br><span style="color:var(--muted);font-size:8.6pt">Calendar sync and card deposits</span></td><td class="r">$5,000</td></tr>
+          <tr><td><b>Lead, call, and conversion tracking</b><br><span style="color:var(--muted);font-size:8.6pt">Source tracking, analytics, rankings</span></td><td class="r">$2,500</td></tr>
+          <tr><td><b>Your build dashboard</b><br><span style="color:var(--muted);font-size:8.6pt">Progress, comments, approvals</span></td><td class="r">$6,000</td></tr>
+          <tr><td><b>Photo and video library license</b><br><span style="color:var(--muted);font-size:8.6pt">Thousands of real installs</span></td><td class="r">$7,500</td></tr>
+          <tr><td><b>Local SEO foundation</b><br><span style="color:var(--muted);font-size:8.6pt">Service and city pages, Google Business Profile, citations</span></td><td class="r">$3,500</td></tr>
+          <tr><td><b>Copy, launch QA, first year hosting</b></td><td class="r">$2,500</td></tr>
+          <tr class="total"><td>Ledger opening value</td><td class="r">$45,000</td></tr>
+        </table>
+        <p class="muted" style="margin-top:6pt">Priced against 2026 published agency ranges. Custom contractor sites run $7,500 to $20,000, booking and calculator features add $2,000 to $10,000 each, client portals start at $15,000, local SEO setup runs $1,500 to $5,000. We price at the middle, never the top.</p>
+      </div>
+      <div>
+        <div class="card glow">
+          <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:#FF4FB3;font-weight:600">The rule</div>
+          <div style="font-size:24pt;font-weight:800;color:#fff;line-height:1;margin-top:4pt">100%</div>
+          <p style="font-size:9.4pt;color:#D3DEE8;margin-top:4pt">of every fee dollar you pay credits against the ledger. When your credits reach the balance, the site is yours. Domain, content license, and ad accounts all transfer to you.</p>
+        </div>
+        <div class="card" style="margin-top:9pt">
+          <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600">Worked example</div>
+          <div class="tl">
+            <div><b>Year 1 · $350,000 gross</b><span>Fee $23,500. Ledger credit $23,500 of $45,000.</span></div>
+            <div><b>Year 2 · $500,000 gross</b><span>Fee $32,500. Credits pass $45,000 in month 8. The site is yours.</span></div>
+            <div><b>From there</b><span>You own the asset. The growth service continues through the 3 year term on the same sliding fee, then renews only if you want it.</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:9pt">
+          <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600">Not counted, but real</div>
+          <p style="font-size:8.8pt;color:var(--muted);margin-top:3pt">We do not put your saved time or the months an agency would take to learn permanent lighting on the ledger. Those savings are yours to keep. The ledger is only what was built.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:10pt">
+      <div class="card feat"><h4 style="margin-top:0">Want more than the base site</h4><p>Extra pages, a new tool, a CRM. We quote it in writing, build after your approval, and it joins the ledger at that price when it ships. Maintenance and hosting never raise the ledger.</p></div>
+      <div class="card feat"><h4 style="margin-top:0">An asset you can point to</h4><p>A site with a stated value on a live ledger is a business asset, the same as a truck or equipment, if you ever sell your company or bring on a partner.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Brighter Nights</b> · Lighting Partner Program</span><span>Contractor proposal · 4</span></div>
+</section>
+
+<!-- PAGE 5 DASHBOARD AND TERMS -->
+<section class="page">
+  <div class="gbar"></div>
+  <div class="pad">
+    <span class="pill">Beyond launch</span>
+    <h2 style="margin-top:8pt">You see everything, <span class="grad">every week.</span></h2>
+    <p class="lead">From day one your build dashboard shows what we are working on, what shipped, and what it cost. Comment on any page, suggest changes, and approve work before it goes live. After launch it becomes your weekly report.</p>
+
+    <div class="card tealglow" style="margin-top:12pt;padding:0;overflow:hidden">
+      <div style="display:grid;grid-template-columns:1.6in 1fr;min-height:2in">
+        <div style="border-right:1px solid var(--line);padding:10pt 11pt;background:rgba(11,14,24,.6)">
+          <div style="font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8pt">Your dashboard</div>
+          <div style="font-size:9pt;color:#fff;font-weight:600;padding:4pt 0;border-left:2px solid var(--cyan);padding-left:6pt">Build progress</div>
+          <div style="font-size:9pt;color:var(--muted);padding:4pt 0 4pt 8pt">Ledger balance</div>
+          <div style="font-size:9pt;color:var(--muted);padding:4pt 0 4pt 8pt">Buyout today</div>
+          <div style="font-size:9pt;color:var(--muted);padding:4pt 0 4pt 8pt">Leads and calls</div>
+          <div style="font-size:9pt;color:var(--muted);padding:4pt 0 4pt 8pt">Rankings</div>
+          <div style="font-size:9pt;color:var(--muted);padding:4pt 0 4pt 8pt">Comments</div>
+        </div>
+        <div style="padding:10pt 12pt">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-size:11pt;font-weight:700;color:#fff">Build progress</div>
+            <span class="pill" style="font-size:7pt;padding:2.5pt 8pt">Week 2 of 4</span>
+          </div>
+          <div style="margin-top:9pt;display:grid;gap:6pt">
+            <div style="display:grid;grid-template-columns:1.3in 1fr auto;gap:8pt;align-items:center;font-size:8.8pt"><span>Home and services pages</span><div style="height:5pt;border-radius:3pt;border:1px solid var(--line)"><div style="width:100%;height:100%;border-radius:3pt;background:linear-gradient(90deg,#00A9B5,#5BE3DD)"></div></div><span class="pill" style="font-size:6.5pt;padding:2pt 6pt">Approved</span></div>
+            <div style="display:grid;grid-template-columns:1.3in 1fr auto;gap:8pt;align-items:center;font-size:8.8pt"><span>Instant estimate tool</span><div style="height:5pt;border-radius:3pt;border:1px solid var(--line)"><div style="width:70%;height:100%;border-radius:3pt;background:linear-gradient(90deg,#00A9B5,#5BE3DD)"></div></div><span class="pill orange" style="font-size:6.5pt;padding:2pt 6pt">In review</span></div>
+            <div style="display:grid;grid-template-columns:1.3in 1fr auto;gap:8pt;align-items:center;font-size:8.8pt"><span>Online booking</span><div style="height:5pt;border-radius:3pt;border:1px solid var(--line)"><div style="width:45%;height:100%;border-radius:3pt;background:linear-gradient(90deg,#00A9B5,#5BE3DD)"></div></div><span class="pill pink" style="font-size:6.5pt;padding:2pt 6pt">Building</span></div>
+            <div style="display:grid;grid-template-columns:1.3in 1fr auto;gap:8pt;align-items:center;font-size:8.8pt"><span>Gallery and reviews</span><div style="height:5pt;border-radius:3pt;border:1px solid var(--line)"><div style="width:20%;height:100%;border-radius:3pt;background:linear-gradient(90deg,#00A9B5,#5BE3DD)"></div></div><span class="pill pink" style="font-size:6.5pt;padding:2pt 6pt">Building</span></div>
+          </div>
+          <div style="margin-top:10pt;border:1px solid var(--line);border-radius:7pt;padding:7pt 9pt;font-size:8.4pt;color:var(--muted)"><b style="color:#fff">Your comment</b> · Can the estimate tool default to warm white? Most of my customers ask for it. <span style="color:var(--cyan)">Reply from your partner manager, 2 hours later. Done, defaulted and live.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Terms in plain language</h3>
+    <table style="font-size:9.2pt">
+      <tr><td class="k">Term</td><td>3 years, county exclusive, your own brand name</td><td class="k">Buyout</td><td>Any time. Ledger balance plus 3 months trailing fee, minus fees already credited</td></tr>
+      <tr><td class="k">Fee</td><td>Sliding scale on gross lighting revenue, reported monthly, verified against distributor purchases</td><td class="k">On exit</td><td>You keep the domain, content license, ad accounts, and licensed use of the photo library</td></tr>
+      <tr><td class="k">Reinvestment</td><td>30% of our fee into your ads, matched by you</td><td class="k">Product</td><td>Brighter Nights lighting on partner installs, bought through your distributor</td></tr>
+      <tr><td class="k">Ledger</td><td>$45,000 base at launch. Approved add ons added at rate card on ship date</td><td class="k">Equity</td><td>Optional conversion clause available, never required</td></tr>
+      <tr><td class="k">Credit</td><td>100% of every fee dollar credits the ledger</td><td class="k">Cancel</td><td>Any time. The ledger math still applies</td></tr>
+    </table>
+    <div class="grid2" style="margin-top:12pt">
+      <div>
+        <h3 style="margin-top:0">Every week after launch</h3>
+        <div class="tl">
+          <div><b>Current ledger balance</b><span>And exactly what it would cost to buy out today.</span></div>
+          <div><b>What shipped and what it cost</b><span>Nothing goes on the ledger you did not approve in writing.</span></div>
+          <div><b>Your fee tier and month to date</b><span>Shown before the invoice, never after.</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-top:0">&nbsp;</h3>
+        <div class="tl">
+          <div><b>Leads, calls, bookings, rankings</b><span>Every lead tied to the source that produced it.</span></div>
+          <div><b>What we suggest adding next</b><span>We review competitor sites in your county and propose the next move. Your call.</span></div>
+          <div><b>Your time</b><span>One to two hours a week with your partner manager. The community covers the rest.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Brighter Nights</b> · Lighting Partner Program</span><span>Contractor proposal · 5</span></div>
+</section>
+
+<!-- PAGE 6 NEXT STEPS AND FAQ -->
+<section class="page">
+  <div class="gbar"></div>
+  <div class="pad">
+    <span class="pill orange">Next steps</span>
+    <h2 style="margin-top:8pt">Ten seats. One per county. <span class="grad">When yours is taken, it is taken.</span></h2>
+    <p class="lead">We onboard two partners a month so every launch gets full attention. The founding round closes at ten.</p>
+
+    <div class="two" style="margin-top:12pt">
+      <div>
+        <div class="step"><div class="n">1</div><div><h5>Qualification call</h5><p>20 minutes. Your county, your trade background, your goals for year one.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h5>Territory check and seat offer</h5><p>We confirm your county is open and hold it for you for 7 days.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h5>Agreement signed</h5><p>Attorney drafted language that mirrors the plain terms on page five. No surprises.</p></div></div>
+        <div class="step"><div class="n">4</div><div><h5>Build, with you watching</h5><p>Site, tools, and tracking built in 2 to 4 weeks. You comment and approve in your dashboard as it comes together.</p></div></div>
+        <div class="step"><div class="n">5</div><div><h5>Onboarding and first bids</h5><p>Product training, bidding help, and your first ads go live.</p></div></div>
+        <div class="step" style="border-bottom:none"><div class="n">6</div><div><h5>Launch</h5><p>Weekly reports begin the following week. Your ledger starts crediting on your first invoice.</p></div></div>
+      </div>
+      <div class="q">
+        <h3 style="margin-top:0">Straight answers</h3>
+        <h5>Do I have to be a lighting contractor already?</h5><p>No. Most founding partners are roofers, gutter, pool, paver, or electrical contractors adding lighting. We teach the product and the bidding.</p>
+        <h5>Who owns the site while I am paying?</h5><p>We do, until your credits reach the ledger. Then you do. Your domain and brand are yours from day one.</p>
+        <h5>What if I leave early?</h5><p>You can. The buyout is the ledger balance minus what you have already credited, plus three months of trailing fee. No other penalty.</p>
+        <h5>Can I add my own pages or tools later?</h5><p>Yes. We quote it in writing, you approve it, and it goes on the ledger at that price when it ships.</p>
+        <h5>What do I pay before launch?</h5><p>Nothing. The first invoice comes after the first month of lighting revenue.</p>
+      </div>
+    </div>
+
+    <h3>The founding round</h3>
+    <div class="grid3">
+      <div class="stat"><div class="n grad">10</div><div class="l">Seats nationwide</div><div class="s">One per county. The round closes when they are gone.</div></div>
+      <div class="stat"><div class="n grad">2</div><div class="l">Onboarded a month</div><div class="s">So every build gets full attention from day one.</div></div>
+      <div class="stat"><div class="n grad">7 days</div><div class="l">County hold</div><div class="s">Your seat is held while you review the agreement.</div></div>
+    </div>
+    <div class="card glow" style="margin-top:14pt;display:grid;grid-template-columns:1fr auto;gap:12pt;align-items:center">
+      <div>
+        <div style="font-size:7.8pt;letter-spacing:.12em;text-transform:uppercase;color:#FF4FB3;font-weight:600">Claim your county</div>
+        <div style="font-size:15pt;font-weight:800;color:#fff;margin-top:3pt;line-height:1.2">Austen Stucki, CEO</div>
+        <p style="font-size:9.6pt;color:#D3DEE8;margin-top:3pt">407-469-7093 &nbsp;·&nbsp; austen@brighternights.com &nbsp;·&nbsp; brighternights.com</p>
+      </div>
+      <div style="text-align:right"><img src="img/logo.png" style="height:.7in"></div>
+    </div>
+    <p class="muted" style="margin-top:10pt">Brighter Nights Lighting Technologies · Sanford, Florida · This proposal describes the program in plain language. The signed agreement governs. Ledger values are set by the Site Value Evaluator at launch and shown live in your dashboard.</p>
+  </div>
+  <div class="foot"><span><b>Brighter Nights</b> · Lighting Partner Program</span><span>Contractor proposal · 6</span></div>
+</section>
+
+</body>
+</html>
