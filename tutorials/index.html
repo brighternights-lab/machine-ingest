@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BNLT Tutorials and Troubleshooting</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#0B0E18;color:#EAF2F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.55}
+a{color:#5BE3DD;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.banner{background:linear-gradient(135deg,#00A9B5,#5BE3DD 25%,#EC008C 55%,#E3056B 75%,#FF7A1A);padding:48px 20px 60px}
+header.banner .wrap h1{margin:0 0 10px;font-size:38px;letter-spacing:-0.5px;color:#0B0E18;font-weight:800}
+header.banner .wrap p{margin:0;color:#111726;font-weight:500;max-width:780px}
+main{padding:0 0 80px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:-30px auto 36px;max-width:1140px;padding:0 20px}
+.stat{background:#111726;border:1px solid rgba(0,169,181,0.35);border-radius:12px;padding:14px 16px}
+.stat .n{font-size:22px;font-weight:700;background:linear-gradient(135deg,#00A9B5,#EC008C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:#9FB4C7;font-size:12px;margin-top:4px}
+.tabs{display:flex;gap:8px;margin:0 0 24px;flex-wrap:wrap;position:sticky;top:0;background:#0B0E18;padding:12px 0;z-index:5;border-bottom:1px solid rgba(159,180,199,0.15)}
+.tab{background:transparent;border:1px solid rgba(0,169,181,0.5);color:#5BE3DD;padding:8px 16px;border-radius:999px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit}
+.tab.active{border-color:#EC008C;color:#EC008C;background:transparent}
+.view{display:none}.view.active{display:block}
+section.topic{margin:0 0 48px}
+section.topic > h2{font-size:24px;margin:0 0 6px;color:#EAF2F8;border-bottom:2px solid;border-image:linear-gradient(90deg,#00A9B5,#EC008C) 1;padding-bottom:8px}
+section.topic > .intro{color:#9FB4C7;margin:0 0 18px;max-width:820px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+article.card{background:#111726;border:1px solid rgba(159,180,199,0.18);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+article.card .shot{background:linear-gradient(135deg,#00A9B5,#5BE3DD,#EC008C,#E3056B,#FF7A1A);padding:8px}
+article.card .shot img{display:block;width:100%;height:auto;border-radius:8px;background:#0B0E18}
+article.card .body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
+article.card h3{margin:0;font-size:16px;font-weight:700;color:#EAF2F8}
+article.card .pill{display:inline-block;align-self:flex-start;border:1px solid #5BE3DD;color:#5BE3DD;background:transparent;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+article.card p{margin:0;color:#9FB4C7;font-size:14px}
+article.card ul,article.card ol{margin:0;padding-left:18px;color:#9FB4C7;font-size:14px}
+article.card .tip{margin-top:4px;padding:10px 12px;border:1px dashed rgba(236,0,140,0.45);border-radius:8px;background:transparent;color:#EAF2F8;font-size:13px}
+article.card .tip strong{color:#EC008C}
+article.card table{width:100%;border-collapse:collapse;font-size:13px;color:#EAF2F8;margin-top:4px}
+article.card th,article.card td{border:1px solid rgba(159,180,199,0.2);padding:6px 8px;text-align:left}
+article.card th{color:#5BE3DD;background:rgba(0,169,181,0.08);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+.trow{background:#111726;border:1px solid rgba(159,180,199,0.18);border-radius:12px;padding:16px 18px;margin:0 0 12px}
+.trow h4{margin:0 0 6px;font-size:15px;color:#EAF2F8}
+.trow .fix{color:#9FB4C7;font-size:14px;margin:0}
+.trow .fix strong{color:#5BE3DD}
+.ref-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 24px}
+.ref-stats .cell{background:#111726;border:1px solid rgba(159,180,199,0.18);border-radius:10px;padding:12px}
+.ref-stats .cell .k{font-size:11px;color:#9FB4C7;text-transform:uppercase;letter-spacing:0.5px}
+.ref-stats .cell .v{font-size:18px;font-weight:700;color:#EAF2F8;margin-top:4px}
+.rebrand{background:#111726;border:1px solid rgba(159,180,199,0.18);border-radius:12px;padding:18px 20px;margin:16px 0}
+.rebrand h3{margin:0 0 10px;color:#EAF2F8}
+.rebrand ul{margin:0;padding-left:20px;color:#9FB4C7}
+footer{color:#9FB4C7;font-size:12px;text-align:center;padding:40px 20px 60px}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.ref-stats{grid-template-columns:repeat(2,1fr)}header.banner .wrap h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header class="banner"><div class="wrap"><h1>BNLT Tutorials and Troubleshooting</h1><p>Every feature of the Pro app, every setup flow, every schedule, every alert. Written for installers, with every step a certified contractor needs to execute in the field.</p></div></header>
+<main class="wrap">
+<div class="stats"><div class="stat"><div class="n">47</div><div class="l">Feature tutorials</div></div><div class="stat"><div class="n">34</div><div class="l">Troubleshooting fixes</div></div><div class="stat"><div class="n">11</div><div class="l">Topic categories</div></div><div class="stat"><div class="n">786</div><div class="l">Source assets catalogued</div></div></div>
+<div class="tabs" role="tablist"><button class="tab active" data-view="tutorials">Tutorials</button><button class="tab" data-view="troubleshooting">Troubleshooting</button><button class="tab" data-view="reference">Reference</button></div>
+<div id="tutorials" class="view active">PLACEHOLDER_TUTORIALS</div><div id="troubleshooting" class="view">PLACEHOLDER_TROUBLESHOOTING</div><div id="reference" class="view">PLACEHOLDER_REFERENCE</div></main><footer>BRI-1283 BNLT Tutorials and Troubleshooting 47 feature tutorials with screenshots</footer><script>document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.view).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});});});</script></body></html>
