@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-10-03",
+  "governing_issue": "BRI-1308",
+  "nervous_system_issue": "BRI-1277",
+  "sources": [
+    {
+      "id": "tutorials-page",
+      "name": "BNLT Tutorials and Troubleshooting page (BRI-1283)",
+      "type": "public web page",
+      "location": "https://raw.githack.com/brighternights-lab/machine-ingest/main/tutorials/index.html",
+      "state": "INGESTED",
+      "docs_pulled": 56,
+      "last_crawl": "2026-10-03",
+      "tier_assignments": {"L4": 56},
+      "notes": "47 user manual PDFs + 9 troubleshooting fixes. v5 commit bbc0893."
+    },
+    {
+      "id": "course-transcripts",
+      "name": "Certified Installer Program full transcripts (KNO-190, BRI-490)",
+      "type": "SharePoint docx",
+      "location": "/personal/madison_brighternights_com/Documents/Training Course Videos/Full_Transcript_and_Video_Mapping.docx",
+      "state": "QUEUED",
+      "docs_pulled": 0,
+      "last_crawl": "2026-10-03 (located, not yet pulled)",
+      "tier_assignments": {"L4": "pending", "L5": "pending"},
+      "notes": "Modules 01 to 11 of the Masters of Lighting Academy. Will ingest as separate L4-COURSE-* docs after per-module split."
+    },
+    {
+      "id": "sharepoint-mol",
+      "name": "SharePoint Masters of Lighting folders",
+      "type": "SharePoint tree",
+      "location": "3 folders across company, personal, SalesMarketing sites (41 items total surfaced)",
+      "state": "SCANNED",
+      "docs_pulled": 0,
+      "last_crawl": "2026-10-03",
+      "tier_assignments": {},
+      "notes": "41 items surfaced. Content varies: training videos, webinar recordings, marketing assets, website handoff zips. L4-relevant subset still being filtered."
+    },
+    {
+      "id": "sharepoint-product-pages",
+      "name": "Product spec and website page content",
+      "type": "SharePoint markdown and HTML",
+      "location": "/sites/SalesMarketing/Shared Documents/New Website Images_Videos/Master_For_Review_Markdown_Edits/",
+      "state": "SCANNED",
+      "docs_pulled": 0,
+      "last_crawl": "2026-10-03",
+      "tier_assignments": {},
+      "notes": "Pool enclosure, sconce, soffit, deck/dock, roofline page content. Spec sheets, SEO fields, body copy. Light Genie capability map lives here too."
+    },
+    {
+      "id": "outlook-sent-18mo",
+      "name": "Austen's Outlook sent folder (18 month window)",
+      "type": "mail archive",
+      "location": "austen@brighternights.com sent items",
+      "state": "QUEUED",
+      "docs_pulled": 0,
+      "last_crawl": "pending",
+      "tier_assignments": {},
+      "notes": "Target: knowledge-rich outbound where Austen explained installer, product, or process in his own words. Likely dozens to low hundreds of candidate threads."
+    },
+    {
+      "id": "linear-rulings",
+      "name": "Linear settled rulings and product truths",
+      "type": "issue tracker",
+      "location": "linear.app teams: Brighter Nights Website, Knowledge Base",
+      "state": "QUEUED",
+      "docs_pulled": 0,
+      "last_crawl": "pending",
+      "tier_assignments": {},
+      "notes": "Target: issues labeled RULED, DECIDED, kb-ruling, closed with resolution. Already pulled BRI-434, BRI-506 for Genie tier model. Full sweep next."
+    },
+    {
+      "id": "install-guides",
+      "name": "Install guides and wiring diagrams",
+      "type": "PDF",
+      "location": "TBD (likely SharePoint Install_Guides/)",
+      "state": "GAP",
+      "docs_pulled": 0,
+      "last_crawl": "pending",
+      "tier_assignments": {},
+      "notes": "Validation Run 1 Q21 flagged wiring diagrams as a kb-gap. Source location to be confirmed in next OneDrive crawl pass."
+    }
+  ],
+  "tiers": {
+    "L1": {"name": "Signed out homeowner", "corpus_doc_count": 0, "state": "NOT STARTED"},
+    "L2": {"name": "Verified contractor", "corpus_doc_count": 0, "state": "NOT STARTED"},
+    "L3": {"name": "Verified distributor rep", "corpus_doc_count": 0, "state": "NOT STARTED"},
+    "L4": {
+      "name": "Certified contractor (Masters of Lighting)",
+      "corpus_doc_count": 56,
+      "state": "LIVE (test rig)",
+      "live_url": "https://raw.githack.com/brighternights-lab/machine-ingest/main/genie-test-l4/index.html",
+      "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-catalog.json",
+      "corpus_bytes": 40493,
+      "approx_tokens": 10100,
+      "last_scrub": "2026-10-03",
+      "banned_term_hits": 0
+    },
+    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 56, "state": "INHERITS L4"}
+  },
+  "validation_history": [
+    {"run": 1, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7",
+     "questions": 25, "passed": 23, "kb_gaps_expected": 5, "kb_gaps_unexpected": 2,
+     "banned_term_leaks": 0, "distributor_cost_leaks": 0}
+  ],
+  "open_kb_gaps": [
+    {"id": "KBG-01", "topic": "Hardware service procedures (bulb replacement, splice repair, controller swap)", "tier": "L4", "found_in": "Validation Run 1 Q19", "candidate_source": "install guides"},
+    {"id": "KBG-02", "topic": "App download links (iOS App Store, Google Play, installer sideload)", "tier": "L4", "found_in": "Validation Run 1 Q23", "candidate_source": "new L4 doc, generate from fact"},
+    {"id": "KBG-03", "topic": "Wiring diagrams for 3-wire C9 with Smart Plug", "tier": "L4", "found_in": "Validation Run 1 Q21", "candidate_source": "install guides"},
+    {"id": "KBG-04", "topic": "Pricing tool routing (hand off to Job Estimator when live)", "tier": "L4", "found_in": "Validation Run 1 Q20", "candidate_source": "BRI-366 / BRI-420 Job Estimator"}
+  ],
+  "serving_status": {
+    "state": "SCAFFOLD READY, pending Austen key setup approval",
+    "pattern": "context loaded per BRI-506",
+    "approval_needed": "which key store Austen prefers for the Genie to pull from (handled in BRI-1308 comment, not written in this file)"
+  }
+}
