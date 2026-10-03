@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  edge_functions = "netlify/edge-functions"
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
