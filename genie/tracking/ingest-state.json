@@ -1,5 +1,6 @@
 {
   "generated_at": "2026-10-03",
+  "version": 2,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
@@ -19,11 +20,11 @@
       "name": "Certified Installer Program full transcripts (KNO-190, BRI-490)",
       "type": "SharePoint docx",
       "location": "/personal/madison_brighternights_com/Documents/Training Course Videos/Full_Transcript_and_Video_Mapping.docx",
-      "state": "QUEUED",
-      "docs_pulled": 0,
-      "last_crawl": "2026-10-03 (located, not yet pulled)",
-      "tier_assignments": {"L4": "pending", "L5": "pending"},
-      "notes": "Modules 01 to 11 of the Masters of Lighting Academy. Will ingest as separate L4-COURSE-* docs after per-module split."
+      "state": "INGESTED",
+      "docs_pulled": 48,
+      "last_crawl": "2026-10-03",
+      "tier_assignments": {"L4": 48, "L5": 48},
+      "notes": "Modules 1-11 of the Masters of Lighting Academy. Split into 46 per-lesson docs + 2 full-module docs (Modules 1 and 11). Doctrine notes on Modules 8 and 11 flag pre-2026-08-03 channel ruling."
     },
     {
       "id": "sharepoint-mol",
@@ -56,7 +57,7 @@
       "docs_pulled": 0,
       "last_crawl": "pending",
       "tier_assignments": {},
-      "notes": "Target: knowledge-rich outbound where Austen explained installer, product, or process in his own words. Likely dozens to low hundreds of candidate threads."
+      "notes": "Target: knowledge-rich outbound where Austen explained installer, product, or process in his own words."
     },
     {
       "id": "linear-rulings",
@@ -78,7 +79,18 @@
       "docs_pulled": 0,
       "last_crawl": "pending",
       "tier_assignments": {},
-      "notes": "Validation Run 1 Q21 flagged wiring diagrams as a kb-gap. Source location to be confirmed in next OneDrive crawl pass."
+      "notes": "Validation Run 1 Q21 flagged wiring diagrams as a kb-gap. Course transcripts partially covered install procedures."
+    },
+    {
+      "id": "zoho-inventory",
+      "name": "Zoho Inventory (SKUs and replacement parts)",
+      "type": "inventory API",
+      "location": "Zoho Inventory via Zapier (connection 028ebba1)",
+      "state": "QUEUED",
+      "docs_pulled": 0,
+      "last_crawl": "pending",
+      "tier_assignments": {},
+      "notes": "Validation Run 2 Q15 flagged SKU gap. Zoho Inventory crawl will fill replacement part and kit SKU questions."
     }
   ],
   "tiers": {
@@ -87,31 +99,39 @@
     "L3": {"name": "Verified distributor rep", "corpus_doc_count": 0, "state": "NOT STARTED"},
     "L4": {
       "name": "Certified contractor (Masters of Lighting)",
-      "corpus_doc_count": 56,
-      "state": "LIVE (test rig)",
+      "corpus_doc_count": 104,
+      "state": "LIVE (test rig, manifest-driven)",
       "live_url": "https://raw.githack.com/brighternights-lab/machine-ingest/main/genie-test-l4/index.html",
-      "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-catalog.json",
-      "corpus_bytes": 40493,
-      "approx_tokens": 10100,
+      "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json",
+      "corpus_bytes": 145700,
+      "approx_tokens": 36400,
+      "chunks": 9,
       "last_scrub": "2026-10-03",
       "banned_term_hits": 0
     },
-    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 56, "state": "INHERITS L4"}
+    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 104, "state": "INHERITS L4"}
   },
   "validation_history": [
     {"run": 1, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7",
      "questions": 25, "passed": 23, "kb_gaps_expected": 5, "kb_gaps_unexpected": 2,
-     "banned_term_leaks": 0, "distributor_cost_leaks": 0}
+     "banned_term_leaks": 0, "distributor_cost_leaks": 0,
+     "notes": "Tutorials corpus only (56 docs)"},
+    {"run": 2, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7",
+     "questions": 15, "passed": 13, "kb_gaps_expected": 2, "kb_gaps_unexpected": 0,
+     "banned_term_leaks": 0, "distributor_cost_leaks": 0,
+     "notes": "Full corpus (104 docs). Doctrine-note deferrals handled correctly on Modules 8 and 11."}
   ],
   "open_kb_gaps": [
     {"id": "KBG-01", "topic": "Hardware service procedures (bulb replacement, splice repair, controller swap)", "tier": "L4", "found_in": "Validation Run 1 Q19", "candidate_source": "install guides"},
     {"id": "KBG-02", "topic": "App download links (iOS App Store, Google Play, installer sideload)", "tier": "L4", "found_in": "Validation Run 1 Q23", "candidate_source": "new L4 doc, generate from fact"},
     {"id": "KBG-03", "topic": "Wiring diagrams for 3-wire C9 with Smart Plug", "tier": "L4", "found_in": "Validation Run 1 Q21", "candidate_source": "install guides"},
-    {"id": "KBG-04", "topic": "Pricing tool routing (hand off to Job Estimator when live)", "tier": "L4", "found_in": "Validation Run 1 Q20", "candidate_source": "BRI-366 / BRI-420 Job Estimator"}
+    {"id": "KBG-04", "topic": "Pricing tool routing (hand off to Job Estimator when live)", "tier": "L4", "found_in": "Validation Run 1 Q20", "candidate_source": "BRI-366 / BRI-420 Job Estimator"},
+    {"id": "KBG-05", "topic": "Tool pricing (Lead Generation, White Labeling monthly cost)", "tier": "L4", "found_in": "Validation Run 2 Q14", "candidate_source": "BRI-366 / BRI-448 Genie monetization"},
+    {"id": "KBG-06", "topic": "SKU and inventory data (replacement parts, kit SKUs)", "tier": "L4", "found_in": "Validation Run 2 Q15", "candidate_source": "Zoho Inventory via Zapier"}
   ],
   "serving_status": {
-    "state": "SCAFFOLD READY, pending Austen key setup approval",
-    "pattern": "context loaded per BRI-506",
+    "state": "SCAFFOLD READY with manifest-driven loader, pending Austen key setup approval",
+    "pattern": "context loaded per BRI-506, manifest-driven so new chunks auto-pick-up",
     "approval_needed": "which key store Austen prefers for the Genie to pull from (handled in BRI-1308 comment, not written in this file)"
   }
 }
