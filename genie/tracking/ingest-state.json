@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-10-03",
-  "version": 9,
+  "version": 10,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
     {"id": "tutorials-page", "state": "INGESTED", "docs_pulled": 56},
     {"id": "course-transcripts", "state": "INGESTED", "docs_pulled": 48},
-    {"id": "linear-rulings", "state": "INGESTED (waves 1-2)", "docs_pulled": 13, "notes": "Wave 1 (8): BRI-388, BRI-434, BRI-807, BRI-491, BRI-484, BRI-26/BRI-312/BRI-506, BRI-357, BRI-353. Wave 2 (5): BRI-401 (lead funnelling), BRI-545/189 (sconce MR16 spec), BRI-497 (warranty extension), BRI-682 (contractor vetting), BRI-367 (spec table gap doctrine). SKIPPED from wave 2: BRI-659 (rep door, L5-only) and BRI-702 (email logo, not corpus content)."},
+    {"id": "linear-rulings", "state": "INGESTED (waves 1-3)", "docs_pulled": 20, "notes": "Wave 1 (8): BRI-388, BRI-434, BRI-807, BRI-491, BRI-484, BRI-26/BRI-312/BRI-506, BRI-357, BRI-353. Wave 2 (5): BRI-401, BRI-545/189, BRI-497, BRI-682, BRI-367. Wave 3 (7): BRI-807 (TIER-PRICING-FINAL supersedes), BRI-484 (WARRANTY-COMPONENT-MAP), BRI-793 (CANON contact/MR16/six-systems), BRI-388 (CANON commercial model), BRI-560 (no financing), BRI-353 (Genie identity Amber), BRI-15 (competitor names). SKIPPED from wave 3: BRI-1040 (defect ticket already captured in doctrine_notes), BRI-659/BRI-702 (unchanged skip)."},
     {"id": "outlook-sent-18mo", "state": "INGESTED (waves 1-2)", "docs_pulled": 15},
     {"id": "sharepoint-product-pages", "state": "INGESTED (wave 1)", "docs_pulled": 9},
     {"id": "zoho-inventory", "state": "INGESTED (wave 1)", "docs_pulled": 2},
-    {"id": "install-guides", "state": "GAP", "docs_pulled": 0},
-    {"id": "sharepoint-mol", "state": "SCANNED", "docs_pulled": 0}
+    {"id": "sharepoint-mol", "state": "INGESTED (wave 1 — M01 Published PDFs + Contractor Onboarding Gallery)", "docs_pulled": 4, "notes": "M01 L1.2c warranty-registration-guide, M01 L1.3c six-systems-two-families, M01 LClosing module-1-field-reference, Contractor Onboarding Gallery Access Guide. KBG-08 resolved by the M01 L1.2c PDF (24V power supply = 3 years, published)."},
+    {"id": "install-guides", "state": "PARTIAL (M01 field cards captured; M02-M11 Published PDFs not yet ingested)", "docs_pulled": 0}
   ],
   "serving": {
     "state": "SCAFFOLD DEPLOYED, pending 2 UI clicks",
@@ -24,8 +24,8 @@
     "pending_actions": ["Link site to GitHub repo in Netlify UI (base dir genie-live)", "Paste real ANTHROPIC_API_KEY in Netlify env var"]
   },
   "tiers": {
-    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 143, "state": "LIVE (test rig, manifest-driven); SERVING SCAFFOLD DEPLOYED", "live_url": "https://bnlt-genie.netlify.app (after key paste)", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 234833, "approx_tokens": 58700, "chunks": 16, "last_scrub": "2026-10-03", "banned_term_hits": 0},
-    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 143, "state": "INHERITS L4"}
+    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 154, "state": "LIVE (test rig, manifest-driven); SERVING SCAFFOLD DEPLOYED", "live_url": "https://bnlt-genie.netlify.app (after key paste)", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 265887, "approx_tokens": 66400, "chunks": 19, "last_scrub": "2026-10-03", "banned_term_hits": 0, "doctrine_notes": 12},
+    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 154, "state": "INHERITS L4"}
   },
   "validation_history": [
     {"run": 1, "questions": 25, "passed": 23, "notes": "Tutorials only 56 docs"},
@@ -43,14 +43,20 @@
     {"id": "KBG-04", "topic": "Pricing tool routing", "tier": "L4"},
     {"id": "KBG-05", "topic": "Tool pricing (Lead Gen, White Labeling)", "tier": "L4"},
     {"id": "KBG-07", "topic": "Course Modules 01-07 L2 re-classification pending BRI-491 Q2", "tier": "L4-doctrine"},
-    {"id": "KBG-08", "topic": "24V power supply warranty term UNRULED", "tier": "L4"},
     {"id": "KBG-10", "topic": "Site-wide 90d→60d warranty copy update", "tier": "website-wide"},
     {"id": "KBG-11", "topic": "Soffit kit sizes and IP figure UNRULED", "tier": "L4"},
     {"id": "KBG-12", "topic": "Deck page aluminum/stainless FAQ drift", "tier": "website"},
     {"id": "KBG-13", "topic": "MT* SKU variant difference UNRULED", "tier": "L4"},
     {"id": "KBG-14", "topic": "107 unclassified Zoho items", "tier": "L4-ingest"},
     {"id": "KBG-15", "topic": "Repeater warranty extension price UNRULED (BRI-497)", "tier": "L4"},
-    {"id": "KBG-16", "topic": "Twelve-numbers spec table (BRI-367) — watts/ft, mesh hop, non-controller warranty terms", "tier": "L4"}
+    {"id": "KBG-16", "topic": "Twelve-numbers spec table (BRI-367) — watts/ft, mesh hop, non-controller warranty terms", "tier": "L4"},
+    {"id": "KBG-17", "topic": "M01 warranty PDF lists repeater at 10yr; canon rules 3yr. Doctrine note added; needs field-card reprint. BRI-1040-adjacent", "tier": "contractor-collateral"},
+    {"id": "KBG-18", "topic": "Contractor Onboarding Gallery guide says 'seven lines'; canon rules six systems. Needs guide reprint on next collateral refresh", "tier": "contractor-collateral"},
+    {"id": "KBG-19", "topic": "M02-M11 Published PDFs not yet ingested (M01 complete). 5 module folders remaining: M02, M03, M05, M06, M07", "tier": "L4-ingest"}
+  ],
+  "resolved_kb_gaps": [
+    {"id": "KBG-06", "topic": "Zoho SKUs", "resolved_round": "Round 6 (inventory ingest)", "resolved_date": "2026-10-03"},
+    {"id": "KBG-08", "topic": "24V power supply warranty UNRULED → 3 years FINAL", "resolved_round": "Round 8 (sharepoint-mol ingest)", "resolved_date": "2026-10-03", "resolved_by": "Published MOLA M01 L1.2c warranty-registration-guide.pdf (2026-10-01)"}
   ],
   "serving_status": {
     "state": "SERVING SCAFFOLD DEPLOYED, pending 2 Austen UI clicks at app.netlify.com/projects/bnlt-genie: (1) link site to GitHub repo, (2) paste ANTHROPIC_API_KEY",
