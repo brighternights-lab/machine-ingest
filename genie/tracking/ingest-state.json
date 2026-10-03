@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-10-03",
-  "version": 10,
+  "version": 11,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
@@ -34,7 +34,8 @@
     {"run": 4, "questions": 10, "passed": 10, "notes": "Voice-01 119 docs"},
     {"run": 5, "questions": 10, "passed": 10, "notes": "Voice-02 127 docs. Warranty doctrine deferral worked."},
     {"run": 6, "questions": 10, "passed": 10, "notes": "Pages 136 docs. Warranty doctrine held under strongest conflict."},
-    {"run": 7, "questions": 10, "passed": 10, "notes": "Inventory 138 docs. KBG-06 resolved. Vendor-name strip tested."}
+    {"run": 7, "questions": 10, "passed": 10, "notes": "Inventory 138 docs. KBG-06 resolved. Vendor-name strip tested."},
+    {"run": 8, "questions": 10, "passed": 10, "notes": "Round 8 corpus 154 docs. Supersession, published-collateral resolution, 90d transfer disambiguation, two-source doctrine override all held."}
   ],
   "open_kb_gaps": [
     {"id": "KBG-01", "topic": "Hardware service procedures", "tier": "L4"},
