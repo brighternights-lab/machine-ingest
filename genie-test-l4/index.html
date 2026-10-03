@@ -39,10 +39,10 @@ code{background:rgba(10,6,23,0.5);padding:2px 6px;border-radius:4px;font-size:12
 <div><h1>L4 Lighting Genie Test<span class="sub">Masters of Lighting · contractor track · unlisted test rig</span></h1></div>
 </header>
 
-<div class="note"><strong>Test rig.</strong> This is the scoped L4-only Genie, built per BRI-434 (five Genie levels) and BRI-506 (context-loaded architecture). The entire L4 corpus (47 tutorials + 9 troubleshooting fixes) is loaded into the system prompt. Isolation by construction per BRI-357 — no other tier's content is reachable from this deployment. Governing issue: <a href="https://linear.app/brighter-nights-website/issue/BRI-1308/" style="color:#5BE3DD">BRI-1308</a>.</div>
+<div class="note"><strong>Test rig.</strong> Scoped L4-only Genie per BRI-434 (five Genie levels) and BRI-506 (context-loaded architecture). Corpus loaded from the manifest at <code>genie/L4-manifest.json</code> so new chunks auto-pick-up with no code change. Isolation by construction per BRI-357. Governing issue <a href="https://linear.app/brighter-nights-website/issue/BRI-1308/" style="color:#5BE3DD">BRI-1308</a>. Dashboard <a href="https://raw.githack.com/brighternights-lab/machine-ingest/main/genie/tracking/index.html" style="color:#5BE3DD">here</a>.</div>
 
 <div class="stats">
-<div class="stat"><div class="n" id="stat-docs">56</div><div class="l">L4 docs loaded</div></div>
+<div class="stat"><div class="n" id="stat-chunks">…</div><div class="l">Corpus chunks</div></div>
 <div class="stat"><div class="n" id="stat-asked">0</div><div class="l">Questions asked</div></div>
 <div class="stat"><div class="n" id="stat-pass">0</div><div class="l">Cited answers</div></div>
 <div class="stat"><div class="n" id="stat-gap">0</div><div class="l">kb-gaps logged</div></div>
@@ -68,24 +68,34 @@ code{background:rgba(10,6,23,0.5);padding:2px 6px;border-radius:4px;font-size:12
 
 <script>
 const BASE = 'https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/';
-const CORPUS_PARTS = ['L4-corpus-part1.md', 'L4-corpus-part2.md'];
-const CATALOG_URL = BASE + 'L4-catalog.json';
+const MANIFEST_URL = BASE + 'L4-manifest.json';
 const MODEL = 'claude-opus-4-7';
+const SYSTEM_PREAMBLE = `You are the BNLT Lighting Genie answering questions from a Certified Contractor (L4), a Masters of Lighting Academy graduate on the contractor track.
+
+Rules.
+1. Answer only from the documents in this corpus. Cite the doc_id of every document you draw from using the form (ID L4-TUT-ACC-01). Multiple citations are fine.
+2. If the answer is not in this corpus, say so. Reply: I do not have that in my knowledge base yet. Logging as kb-gap. (kb-gap). Do not guess, do not draw on outside knowledge.
+3. Audience is a Certified Contractor. Address them professionally, assume field experience with the BNLT app, assume device is already in hand. Keep answers short enough to read on a phone in the field.
+4. Never say BlueHopper, Blue Roots, Christmas lights, or BH Installer. Call the product the BNLT Pro app. Call strand products permanent outdoor lighting or roofline lighting as appropriate.
+5. Never quote distributor cost. Contractor price and MSRP are fine (BRI-434 Amendment 3).
+6. For any doc with a doctrine_note, prefer the current ruling named in that note over the pre-ruling transcript content, and cite the note.
+7. Format. Short answer first in one or two sentences. Then numbered steps if the question is procedural, bullets if it is a reference lookup. End with the citations.
+
+Corpus follows.`;
 
 let CORPUS = null;
-let CATALOG = null;
+let MANIFEST = null;
 let LOG = [];
 let STATS = {asked: 0, pass: 0, gap: 0};
 
 async function loadCorpus() {
   try {
-    const [parts, catalog] = await Promise.all([
-      Promise.all(CORPUS_PARTS.map(p => fetch(BASE + p).then(r => r.text()))),
-      fetch(CATALOG_URL).then(r => r.json())
-    ]);
-    CORPUS = parts.join('');
-    CATALOG = catalog;
-    document.getElementById('stat-docs').textContent = catalog.length;
+    const mresp = await fetch(MANIFEST_URL + '?t=' + Date.now());
+    MANIFEST = await mresp.json();
+    const chunkFiles = MANIFEST.chunks.map(c => c.file);
+    const parts = await Promise.all(chunkFiles.map(f => fetch(BASE + f).then(r => r.text())));
+    CORPUS = SYSTEM_PREAMBLE + '\n\n' + parts.join('\n\n');
+    document.getElementById('stat-chunks').textContent = chunkFiles.length;
   } catch(e) {
     document.getElementById('answer-wrap').innerHTML = '<div class="answer kb-gap">Corpus load failed: ' + e.message + '</div>';
   }
@@ -114,7 +124,7 @@ function escapeHtml(s) {
 }
 
 function citify(text) {
-  return text.replace(/\(ID\s+(L4-[A-Z]+-[A-Z]+-\d+)\)/g, '<span class="cite">$1</span>')
+  return text.replace(/\(ID\s+(L4-[A-Z]+-[A-Z0-9-]+)\)/g, '<span class="cite">$1</span>')
              .replace(/\(kb-gap\)/g, '<span class="cite" style="background:rgba(255,122,26,0.2);color:#FF7A1A">kb-gap</span>');
 }
 
