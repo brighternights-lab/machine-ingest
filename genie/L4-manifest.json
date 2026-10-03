@@ -2,7 +2,7 @@
   "tier": "L4",
   "aud": ["contractor", "rep"],
   "generated_at": "2026-10-03",
-  "version": 3,
+  "version": 4,
   "chunks": [
     {"file": "L4-corpus-part1.md", "source": "tutorials-page", "docs_covered": "L4-TUT-ACC through L4-TUT-GRP-17"},
     {"file": "L4-corpus-part2.md", "source": "tutorials-page", "docs_covered": "L4-TUT-GRP-18 through L4-FIX-SCH-09"},
@@ -14,16 +14,18 @@
     {"file": "L4-corpus-course-06.md", "source": "course-transcripts (KNO-190 / BRI-490)", "docs_covered": "Module 9 continued + Module 10 accessories"},
     {"file": "L4-corpus-course-07.md", "source": "course-transcripts (KNO-190 / BRI-490)", "docs_covered": "Module 11 ecosystem sales full"},
     {"file": "L4-corpus-rules-01.md", "source": "linear-rulings", "docs_covered": "L4-RULE-COMMERCIAL-MODEL, L4-RULE-GENIE-LEVELS, L4-RULE-CONTRACTOR-PRICING-L4, L4-RULE-ACADEMY-STRUCTURE, L4-RULE-WARRANTY-MAPPING, L4-RULE-BANNED-TERMS, L4-RULE-GENIE-ARCHITECTURE, L4-RULE-FIVE-GENIE-APPEARANCE"},
-    {"file": "L4-corpus-voice-01.md", "source": "outlook-sent (Austen voice)", "docs_covered": "L4-VOICE-HOW-YOU-BUY, L4-VOICE-PRODUCT-DIFFERENTIATION, L4-VOICE-ECOSYSTEM-LINEUP, L4-VOICE-GENIE-FOR-CONTRACTORS, L4-VOICE-LEADS-AND-TERRITORY, L4-VOICE-MAINTENANCE-PROGRAM, L4-VOICE-BRONZE-TRACK-INVENTORY"}
+    {"file": "L4-corpus-voice-01.md", "source": "outlook-sent (Austen voice wave 1)", "docs_covered": "L4-VOICE-HOW-YOU-BUY, L4-VOICE-PRODUCT-DIFFERENTIATION, L4-VOICE-ECOSYSTEM-LINEUP, L4-VOICE-GENIE-FOR-CONTRACTORS, L4-VOICE-LEADS-AND-TERRITORY, L4-VOICE-MAINTENANCE-PROGRAM, L4-VOICE-BRONZE-TRACK-INVENTORY"},
+    {"file": "L4-corpus-voice-02.md", "source": "outlook-sent (Austen voice wave 2)", "docs_covered": "L4-VOICE-POOL-ENCLOSURE-RECOMMENDATION, L4-VOICE-POOL-ENCLOSURE-TRACK-SPECS, L4-VOICE-SCONCE-SPECS, L4-VOICE-WIFI-CALLBACK-POSITIONING, L4-VOICE-WHOLE-PROPERTY-GROWTH, L4-VOICE-FIRST-POOL-ENCLOSURE-HANDOFF, L4-VOICE-ABC-SUPPLY-ACCOUNT-FLOW, L4-VOICE-WARRANTY-FIELD-NARRATIVE"}
   ],
   "doctrine_notes": [
     {"applies_to_prefix": "L4-COURSE-M08-", "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 and L4-RULE-COMMERCIAL-MODEL over sales doctrine in this module."},
     {"applies_to_prefix": "L4-COURSE-M11-", "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 and L4-RULE-COMMERCIAL-MODEL over pricing doctrine in this module."},
-    {"applies_to_prefix": "L4-RULE-ACADEMY-STRUCTURE", "note": "BRI-491 Q1 and Q2 are still open. The Academy umbrella name is ruled but the exact per-module tier gating of course modules is pending Austen's final answer."}
+    {"applies_to_prefix": "L4-RULE-ACADEMY-STRUCTURE", "note": "BRI-491 Q1 and Q2 are still open. The Academy umbrella name is ruled but the exact per-module tier gating of course modules is pending Austen's final answer."},
+    {"applies_to_prefix": "L4-VOICE-WARRANTY-FIELD-NARRATIVE", "note": "This Austen-voice email predates BRI-484 and states 'registration within 90 days'. Defer to L4-RULE-WARRANTY-MAPPING (60 days FROM INSTALL, FINAL) on any warranty answer. Product-specific coverage years are consistent with the ruling and may be used as-is."}
   ],
   "smallest_tier_tracking": {
-    "note": "Docs with smallest_tier_target != L4 are flagged for future downward re-classification when lower-tier Genie deployments go live. Lesson from Round 3: classify by the smallest tier that should see the content, not the largest. Lossless downward movement, lossy upward.",
+    "note": "Docs with smallest_tier_target != L4 are flagged for future downward re-classification when lower-tier Genie deployments go live. Lesson from Round 3: classify by the smallest tier that should see the content, not the largest. Lossless downward movement, lossy upward. Wave-2 voice docs are all L4 (pool-enclosure specifics, contractor-sale handoff, ABC Supply flow, warranty specifics) and do not expand the L2 candidate list.",
     "L2_candidates": ["L4-VOICE-HOW-YOU-BUY", "L4-VOICE-PRODUCT-DIFFERENTIATION", "L4-VOICE-ECOSYSTEM-LINEUP", "L4-COURSE-M01-*", "L4-COURSE-M02-*", "L4-COURSE-M03-*", "L4-COURSE-M04-*", "L4-COURSE-M05-*", "L4-COURSE-M06-*", "L4-COURSE-M07-*"],
-    "L4_only": ["L4-VOICE-GENIE-FOR-CONTRACTORS", "L4-VOICE-LEADS-AND-TERRITORY", "L4-VOICE-MAINTENANCE-PROGRAM", "L4-COURSE-M08-*", "L4-COURSE-M09-*", "L4-COURSE-M10-*", "L4-COURSE-M11-*", "L4-RULE-CONTRACTOR-PRICING-L4"]
+    "L4_only": ["L4-VOICE-GENIE-FOR-CONTRACTORS", "L4-VOICE-LEADS-AND-TERRITORY", "L4-VOICE-MAINTENANCE-PROGRAM", "L4-VOICE-POOL-ENCLOSURE-RECOMMENDATION", "L4-VOICE-POOL-ENCLOSURE-TRACK-SPECS", "L4-VOICE-SCONCE-SPECS", "L4-VOICE-WIFI-CALLBACK-POSITIONING", "L4-VOICE-WHOLE-PROPERTY-GROWTH", "L4-VOICE-FIRST-POOL-ENCLOSURE-HANDOFF", "L4-VOICE-ABC-SUPPLY-ACCOUNT-FLOW", "L4-VOICE-WARRANTY-FIELD-NARRATIVE", "L4-COURSE-M08-*", "L4-COURSE-M09-*", "L4-COURSE-M10-*", "L4-COURSE-M11-*", "L4-RULE-CONTRACTOR-PRICING-L4"]
   }
 }
