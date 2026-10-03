@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L4 Lighting Genie Test (Masters of Lighting, contractor)</title><style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;color:#EAF2F8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55}
+body{min-height:100vh;background-color:#0A0617;background-image:radial-gradient(ellipse 70% 55% at 15% 18%,rgba(236,0,140,0.28),transparent 60%),radial-gradient(ellipse 60% 50% at 92% 22%,rgba(0,169,181,0.32),transparent 65%),radial-gradient(ellipse 65% 55% at 88% 82%,rgba(255,122,26,0.22),transparent 65%),radial-gradient(ellipse 70% 55% at 8% 88%,rgba(227,5,107,0.28),transparent 60%),radial-gradient(circle at 50% 50%,rgba(5,2,15,0.75),transparent 70%);background-attachment:fixed;background-size:cover}
+.wrap{max-width:980px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;align-items:center;gap:16px;padding:16px 0 24px;border-bottom:1px solid rgba(159,180,199,0.15);margin-bottom:24px}
+header img{height:60px}
+h1{margin:0;font-size:20px;font-weight:800;background:linear-gradient(135deg,#5BE3DD,#EC008C);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .sub{display:block;font-size:12px;color:#9FB4C7;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;background:none;-webkit-text-fill-color:#9FB4C7;margin-top:4px}
+.pill{display:inline-block;border:1px solid #EC008C;color:#EC008C;background:transparent;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.note{background:rgba(17,23,38,0.82);border:1px dashed rgba(255,122,26,0.7);border-radius:12px;padding:14px 18px;margin:0 0 24px;color:#EAF2F8;font-size:13px;backdrop-filter:blur(8px)}
+.note strong{color:#FF7A1A}
+.panel{background:rgba(17,23,38,0.82);border:1px solid rgba(159,180,199,0.2);border-radius:14px;padding:18px;margin:0 0 18px;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,0.35)}
+.panel h2{margin:0 0 12px;font-size:14px;color:#5BE3DD;text-transform:uppercase;letter-spacing:1px}
+label{display:block;color:#9FB4C7;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;margin:0 0 6px}
+input[type=password],textarea{width:100%;background:rgba(10,6,23,0.5);border:1px solid rgba(0,169,181,0.4);border-radius:8px;padding:10px 12px;color:#EAF2F8;font-family:inherit;font-size:14px;line-height:1.5}
+textarea{min-height:88px;resize:vertical}
+input[type=password]:focus,textarea:focus{outline:none;border-color:#EC008C}
+button{background:transparent;border:1px solid #5BE3DD;color:#5BE3DD;padding:10px 20px;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;margin-top:12px;text-transform:uppercase;letter-spacing:0.5px}
+button:hover{border-color:#EC008C;color:#EC008C}
+button:disabled{opacity:0.4;cursor:not-allowed}
+.answer{background:rgba(10,6,23,0.5);border:1px solid rgba(0,169,181,0.3);border-radius:8px;padding:14px 16px;margin-top:12px;white-space:pre-wrap;font-size:14px}
+.answer.kb-gap{border-color:#FF7A1A;background:rgba(255,122,26,0.08)}
+.cite{display:inline-block;background:rgba(0,169,181,0.15);color:#5BE3DD;padding:2px 8px;border-radius:4px;font-size:11px;font-family:'SF Mono',Monaco,monospace;margin:2px 4px 2px 0}
+.log{max-height:300px;overflow-y:auto;font-size:12px;color:#9FB4C7;font-family:'SF Mono',Monaco,monospace}
+.log .row{padding:6px 0;border-bottom:1px solid rgba(159,180,199,0.1)}
+.log .row:last-child{border-bottom:none}
+.log .pass{color:#5BE3DD}
+.log .gap{color:#FF7A1A}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 18px}
+.stat{background:rgba(17,23,38,0.75);border:1px solid rgba(0,169,181,0.4);border-radius:10px;padding:10px 12px;text-align:center;backdrop-filter:blur(8px)}
+.stat .n{font-size:18px;font-weight:700;background:linear-gradient(135deg,#5BE3DD,#EC008C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:#9FB4C7;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.muted{color:#9FB4C7;font-size:12px;margin-top:8px}
+code{background:rgba(10,6,23,0.5);padding:2px 6px;border-radius:4px;font-size:12px;color:#5BE3DD}
+</style></head><body><div class="wrap">
+<header>
+<img src="https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/tutorials/bnlt-logo.jpg" alt="BNLT">
+<div><h1>L4 Lighting Genie Test<span class="sub">Masters of Lighting · contractor track · unlisted test rig</span></h1></div>
+</header>
+
+<div class="note"><strong>Test rig.</strong> This is the scoped L4-only Genie, built per BRI-434 (five Genie levels) and BRI-506 (context-loaded architecture). The entire L4 corpus (47 tutorials + 9 troubleshooting fixes) is loaded into the system prompt. Isolation by construction per BRI-357 — no other tier's content is reachable from this deployment. Governing issue: <a href="https://linear.app/brighter-nights-website/issue/BRI-1308/" style="color:#5BE3DD">BRI-1308</a>.</div>
+
+<div class="stats">
+<div class="stat"><div class="n" id="stat-docs">56</div><div class="l">L4 docs loaded</div></div>
+<div class="stat"><div class="n" id="stat-asked">0</div><div class="l">Questions asked</div></div>
+<div class="stat"><div class="n" id="stat-pass">0</div><div class="l">Cited answers</div></div>
+<div class="stat"><div class="n" id="stat-gap">0</div><div class="l">kb-gaps logged</div></div>
+</div>
+
+<div class="panel"><h2>Session API key <span class="pill">in memory only</span></h2>
+<label for="apikey">Anthropic API key (sk-ant-...) — never persisted, never sent to GitHub, in-memory for this tab only</label>
+<input type="password" id="apikey" placeholder="sk-ant-...">
+<div class="muted">Rule #1 (no spending without explicit go) means Austen pastes this himself per session. The page never writes it to localStorage, never POSTs it to any BNLT server, never leaves the browser except to api.anthropic.com. Clearing the field or closing the tab erases it.</div>
+</div>
+
+<div class="panel"><h2>Ask the L4 Genie</h2>
+<label for="q">Your question (contractor voice, field scenario)</label>
+<textarea id="q" placeholder="e.g. The gateway is stuck during BSP update. What do I do?"></textarea>
+<button id="ask" onclick="ask()">Ask</button>
+<div id="answer-wrap" style="margin-top:16px"></div>
+</div>
+
+<div class="panel"><h2>Session log <span class="pill" id="log-count">0 Q</span></h2>
+<div class="log" id="log"><div class="row muted">Nothing yet. Questions and answers log here. Export the whole thing to BRI-1308 with the button below.</div></div>
+<button onclick="exportLog()" style="margin-top:12px">Copy log for BRI-1308</button>
+</div>
+
+<script>
+const BASE = 'https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/';
+const CORPUS_PARTS = ['L4-corpus-part1.md', 'L4-corpus-part2.md'];
+const CATALOG_URL = BASE + 'L4-catalog.json';
+const MODEL = 'claude-opus-4-7';
+
+let CORPUS = null;
+let CATALOG = null;
+let LOG = [];
+let STATS = {asked: 0, pass: 0, gap: 0};
+
+async function loadCorpus() {
+  try {
+    const [parts, catalog] = await Promise.all([
+      Promise.all(CORPUS_PARTS.map(p => fetch(BASE + p).then(r => r.text()))),
+      fetch(CATALOG_URL).then(r => r.json())
+    ]);
+    CORPUS = parts.join('');
+    CATALOG = catalog;
+    document.getElementById('stat-docs').textContent = catalog.length;
+  } catch(e) {
+    document.getElementById('answer-wrap').innerHTML = '<div class="answer kb-gap">Corpus load failed: ' + e.message + '</div>';
+  }
+}
+
+function updateStats() {
+  document.getElementById('stat-asked').textContent = STATS.asked;
+  document.getElementById('stat-pass').textContent = STATS.pass;
+  document.getElementById('stat-gap').textContent = STATS.gap;
+  document.getElementById('log-count').textContent = STATS.asked + ' Q';
+}
+
+function renderLog() {
+  const el = document.getElementById('log');
+  if (LOG.length === 0) {
+    el.innerHTML = '<div class="row muted">Nothing yet.</div>';
+    return;
+  }
+  el.innerHTML = LOG.map((r, i) =>
+    '<div class="row"><span class="' + (r.kbgap ? 'gap' : 'pass') + '">#' + (i+1) + ' ' + (r.kbgap ? 'KB-GAP' : 'ANSWERED') + '</span> · Q: ' + escapeHtml(r.q.substring(0, 80)) + (r.q.length > 80 ? '…' : '') + '</div>'
+  ).reverse().join('');
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function citify(text) {
+  return text.replace(/\(ID\s+(L4-[A-Z]+-[A-Z]+-\d+)\)/g, '<span class="cite">$1</span>')
+             .replace(/\(kb-gap\)/g, '<span class="cite" style="background:rgba(255,122,26,0.2);color:#FF7A1A">kb-gap</span>');
+}
+
+async function ask() {
+  const q = document.getElementById('q').value.trim();
+  const key = document.getElementById('apikey').value.trim();
+  if (!q) return;
+  if (!key) {
+    document.getElementById('answer-wrap').innerHTML = '<div class="answer kb-gap">Paste your Anthropic API key above first. It stays in this tab only.</div>';
+    return;
+  }
+  if (!CORPUS) {
+    document.getElementById('answer-wrap').innerHTML = '<div class="answer kb-gap">Corpus not loaded yet. Reload the page.</div>';
+    return;
+  }
+  const btn = document.getElementById('ask');
+  btn.disabled = true;
+  btn.textContent = 'Thinking…';
+  document.getElementById('answer-wrap').innerHTML = '<div class="answer">Thinking…</div>';
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 1024,
+        system: CORPUS,
+        messages: [{role: 'user', content: q}]
+      })
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error?.message || resp.statusText);
+    const text = data.content?.[0]?.text || '(empty)';
+    const kbgap = /\(kb-gap\)/i.test(text);
+    STATS.asked += 1;
+    if (kbgap) STATS.gap += 1; else STATS.pass += 1;
+    updateStats();
+    LOG.push({ts: new Date().toISOString(), q, a: text, kbgap});
+    renderLog();
+    document.getElementById('answer-wrap').innerHTML = '<div class="answer' + (kbgap ? ' kb-gap' : '') + '">' + citify(escapeHtml(text)) + '</div>';
+    document.getElementById('q').value = '';
+  } catch(e) {
+    document.getElementById('answer-wrap').innerHTML = '<div class="answer kb-gap">Error: ' + escapeHtml(e.message) + '</div>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Ask';
+  }
+}
+
+function exportLog() {
+  if (LOG.length === 0) {
+    alert('No questions yet.');
+    return;
+  }
+  const md = '## L4 Genie test session · ' + new Date().toISOString() + '\n\n' +
+    LOG.map((r, i) => '### Q' + (i+1) + ' · ' + (r.kbgap ? '**kb-gap**' : '**answered**') +
+      '\n\n**Question.** ' + r.q + '\n\n**Answer.**\n\n' + r.a + '\n').join('\n---\n\n');
+  navigator.clipboard.writeText(md).then(() => alert('Copied ' + LOG.length + ' Q/A pairs. Paste into BRI-1308.'));
+}
+
+document.getElementById('q').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) ask();
+});
+
+loadCorpus();
+</script>
+</div></body></html>
