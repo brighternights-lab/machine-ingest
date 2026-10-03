@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-10-03",
-  "version": 12,
+  "version": 13,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
@@ -10,8 +10,8 @@
     {"id": "outlook-sent-18mo", "state": "INGESTED (waves 1-2)", "docs_pulled": 15},
     {"id": "sharepoint-product-pages", "state": "INGESTED (wave 1)", "docs_pulled": 9},
     {"id": "zoho-inventory", "state": "INGESTED (wave 1)", "docs_pulled": 2},
-    {"id": "sharepoint-mol", "state": "INGESTED (M01 + M02 Published PDFs)", "docs_pulled": 10, "notes": "M01: L1.2c warranty-reg guide, L1.3c six-systems-two-families, LClosing field-reference, + Onboarding Gallery guide. M02: L2.1 power-kit sizing (0.55 W/ft published, resolves part of KBG-16), L2.2 corner cuts, L2.3 pre-mount, L2.4 assembly guide (30 ft lead/5 ft amp/20 lights-per-zone published), L2.5 profile choice, L2.6 finish walkthrough."},
-    {"id": "install-guides", "state": "PARTIAL (M01+M02 done; M03/M05/M06/M07 Published PDFs remaining)", "docs_pulled": 10}
+    {"id": "sharepoint-mol", "state": "INGESTED (M01+M02+M03)", "docs_pulled": 15, "notes": "M01: warranty-reg guide, six-systems-two-families, field reference, onboarding gallery. M02: power/kit, corners, pre-mount, assembly, profile, finish. M03: overview, measure-fabricate-mount, assembly, test-as-you-go, walkthrough-handoff. KBG-16 partial resolution ongoing per round."},
+    {"id": "install-guides", "state": "PARTIAL (M01+M02+M03 done; M05/M06/M07 Published PDFs remaining)", "docs_pulled": 15}
   ],
   "serving": {
     "state": "SCAFFOLD DEPLOYED, pending 2 UI clicks",
@@ -24,8 +24,8 @@
     "pending_actions": ["Link site to GitHub repo in Netlify UI (base dir genie-live)", "Paste real ANTHROPIC_API_KEY in Netlify env var"]
   },
   "tiers": {
-    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 160, "state": "LIVE (test rig, manifest-driven); SERVING SCAFFOLD DEPLOYED", "live_url": "https://bnlt-genie.netlify.app (after key paste)", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 277299, "approx_tokens": 69300, "chunks": 20, "last_scrub": "2026-10-03", "banned_term_hits": 0, "doctrine_notes": 13},
-    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 160, "state": "INHERITS L4"}
+    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 165, "state": "LIVE (test rig, manifest-driven); SERVING SCAFFOLD DEPLOYED", "live_url": "https://bnlt-genie.netlify.app (after key paste)", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 287613, "approx_tokens": 71900, "chunks": 21, "last_scrub": "2026-10-03", "banned_term_hits": 0, "doctrine_notes": 14},
+    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 165, "state": "INHERITS L4"}
   },
   "validation_history": [
     {"run": 1, "questions": 25, "passed": 23, "notes": "Tutorials only 56 docs"},
@@ -34,8 +34,8 @@
     {"run": 4, "questions": 10, "passed": 10, "notes": "Voice-01 119 docs"},
     {"run": 5, "questions": 10, "passed": 10, "notes": "Voice-02 127 docs. Warranty doctrine deferral worked."},
     {"run": 6, "questions": 10, "passed": 10, "notes": "Pages 136 docs. Warranty doctrine held under strongest conflict."},
-    {"run": 7, "questions": 10, "passed": 10, "notes": "Inventory 138 docs. KBG-06 resolved. Vendor-name strip tested."},
-    {"run": 8, "questions": 10, "passed": 10, "notes": "Round 8 corpus 154 docs. Supersession, published-collateral resolution, 90d transfer disambiguation, two-source doctrine override all held."}
+    {"run": 7, "questions": 10, "passed": 10, "notes": "Inventory 138 docs. KBG-06 resolved."},
+    {"run": 8, "questions": 10, "passed": 10, "notes": "Round 8 corpus 154 docs. Supersession, published-collateral resolution, 90d transfer disambiguation all held."}
   ],
   "open_kb_gaps": [
     {"id": "KBG-01", "topic": "Hardware service procedures", "tier": "L4"},
@@ -50,14 +50,14 @@
     {"id": "KBG-13", "topic": "MT* SKU variant difference UNRULED", "tier": "L4"},
     {"id": "KBG-14", "topic": "107 unclassified Zoho items", "tier": "L4-ingest"},
     {"id": "KBG-15", "topic": "Repeater warranty extension price UNRULED (BRI-497)", "tier": "L4"},
-    {"id": "KBG-16", "topic": "Twelve-numbers spec table (BRI-367) — Roofline numbers PUBLISHED via M02 PDFs (0.55 W/ft, 30 ft lead, 5 ft amp, 20 lights/zone); still open for Soffit, Pool Enclosure, Deck/Dock, Landscape, Sconce + mesh hop in-field + transformer VA sizing", "tier": "L4"},
+    {"id": "KBG-16", "topic": "Twelve-numbers spec table (BRI-367) — Roofline 4 numbers PUBLISHED (M02), One-Port 1,000 ft addressing PUBLISHED (M03); still open: Soffit/Deck/Dock/Landscape/Sconce + mesh hop + transformer VA", "tier": "L4"},
     {"id": "KBG-17", "topic": "M01 warranty PDF lists repeater at 10yr; canon rules 3yr. Doctrine note added; needs field-card reprint", "tier": "contractor-collateral"},
-    {"id": "KBG-18", "topic": "Contractor Onboarding Gallery guide says 'seven lines'; canon rules six systems. Needs guide reprint", "tier": "contractor-collateral"},
-    {"id": "KBG-19", "topic": "M03/M05/M06/M07 Published PDFs not yet ingested (M01+M02 complete). 4 module folders remaining", "tier": "L4-ingest"}
+    {"id": "KBG-18", "topic": "Contractor Onboarding Gallery guide says 'seven lines'; canon rules six systems", "tier": "contractor-collateral"},
+    {"id": "KBG-19", "topic": "M05/M06/M07 Published PDFs remaining (M01+M02+M03 done). M04/M08-M11 do not exist as Published PDFs folders yet", "tier": "L4-ingest"}
   ],
   "resolved_kb_gaps": [
     {"id": "KBG-06", "topic": "Zoho SKUs", "resolved_round": "Round 6", "resolved_date": "2026-10-03"},
-    {"id": "KBG-08", "topic": "24V power supply warranty UNRULED → 3 years FINAL", "resolved_round": "Round 8", "resolved_date": "2026-10-03", "resolved_by": "Published MOLA M01 L1.2c warranty-registration-guide.pdf"}
+    {"id": "KBG-08", "topic": "24V power supply warranty UNRULED → 3 years FINAL", "resolved_round": "Round 8", "resolved_date": "2026-10-03"}
   ],
   "serving_status": {
     "state": "SERVING SCAFFOLD DEPLOYED, pending 2 Austen UI clicks at app.netlify.com/projects/bnlt-genie: (1) link site to GitHub repo, (2) paste ANTHROPIC_API_KEY",
