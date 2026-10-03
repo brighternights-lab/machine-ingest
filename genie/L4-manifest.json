@@ -1,0 +1,65 @@
+{
+  "tier": "L4",
+  "aud": [
+    "contractor",
+    "rep"
+  ],
+  "generated_at": "2026-10-03",
+  "chunks": [
+    {
+      "file": "L4-corpus-part1.md",
+      "source": "tutorials-page",
+      "docs_covered": "L4-TUT-ACC through L4-TUT-GRP-17"
+    },
+    {
+      "file": "L4-corpus-part2.md",
+      "source": "tutorials-page",
+      "docs_covered": "L4-TUT-GRP-18 through L4-FIX-SCH-09"
+    },
+    {
+      "file": "L4-corpus-course-01.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 1"
+    },
+    {
+      "file": "L4-corpus-course-02.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 2"
+    },
+    {
+      "file": "L4-corpus-course-03.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 3"
+    },
+    {
+      "file": "L4-corpus-course-04.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 4"
+    },
+    {
+      "file": "L4-corpus-course-05.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 5"
+    },
+    {
+      "file": "L4-corpus-course-06.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 6"
+    },
+    {
+      "file": "L4-corpus-course-07.md",
+      "source": "course-transcripts (KNO-190 / BRI-490)",
+      "docs_covered": "course chunk 7"
+    }
+  ],
+  "doctrine_notes": [
+    {
+      "applies_to_prefix": "L4-COURSE-M08-",
+      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 over sales doctrine in this module."
+    },
+    {
+      "applies_to_prefix": "L4-COURSE-M11-",
+      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 over pricing doctrine in this module."
+    }
+  ]
+}
