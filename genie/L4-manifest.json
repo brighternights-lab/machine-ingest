@@ -5,6 +5,7 @@
     "rep"
   ],
   "generated_at": "2026-10-03",
+  "version": 2,
   "chunks": [
     {
       "file": "L4-corpus-part1.md",
@@ -19,47 +20,56 @@
     {
       "file": "L4-corpus-course-01.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 1"
+      "docs_covered": "Module 1 full + Module 2 lessons 2.1-2.4"
     },
     {
       "file": "L4-corpus-course-02.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 2"
+      "docs_covered": "Module 3 pool enclosure + Module 4 soffit"
     },
     {
       "file": "L4-corpus-course-03.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 3"
+      "docs_covered": "Module 5 deck + Module 6 sconce"
     },
     {
       "file": "L4-corpus-course-04.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 4"
+      "docs_covered": "Module 7 landscape + Module 8 sales start"
     },
     {
       "file": "L4-corpus-course-05.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 5"
+      "docs_covered": "Module 8 sales continued + Module 9 first job"
     },
     {
       "file": "L4-corpus-course-06.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 6"
+      "docs_covered": "Module 9 continued + Module 10 accessories"
     },
     {
       "file": "L4-corpus-course-07.md",
       "source": "course-transcripts (KNO-190 / BRI-490)",
-      "docs_covered": "course chunk 7"
+      "docs_covered": "Module 11 ecosystem sales full"
+    },
+    {
+      "file": "L4-corpus-rules-01.md",
+      "source": "linear-rulings",
+      "docs_covered": "L4-RULE-COMMERCIAL-MODEL, L4-RULE-GENIE-LEVELS, L4-RULE-CONTRACTOR-PRICING-L4, L4-RULE-ACADEMY-STRUCTURE, L4-RULE-WARRANTY-MAPPING, L4-RULE-BANNED-TERMS, L4-RULE-GENIE-ARCHITECTURE, L4-RULE-FIVE-GENIE-APPEARANCE"
     }
   ],
   "doctrine_notes": [
     {
       "applies_to_prefix": "L4-COURSE-M08-",
-      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 over sales doctrine in this module."
+      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 and L4-RULE-COMMERCIAL-MODEL over sales doctrine in this module."
     },
     {
       "applies_to_prefix": "L4-COURSE-M11-",
-      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 over pricing doctrine in this module."
+      "note": "Predates 2026-08-03 channel ruling. Prefer BRI-434 Amendment 1 and L4-RULE-COMMERCIAL-MODEL over pricing doctrine in this module."
+    },
+    {
+      "applies_to_prefix": "L4-RULE-ACADEMY-STRUCTURE",
+      "note": "BRI-491 Q1 and Q2 are still open. The Academy umbrella name is ruled but the exact per-module tier gating of course modules is pending Austen's final answer."
     }
   ]
 }
