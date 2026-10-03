@@ -1,60 +1,65 @@
 {
   "generated_at": "2026-10-03",
-  "version": 7,
+  "version": 8,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
-    {"id": "tutorials-page", "name": "BNLT Tutorials and Troubleshooting page (BRI-1283)", "type": "public web page", "location": "https://raw.githack.com/brighternights-lab/machine-ingest/main/tutorials/index.html", "state": "INGESTED", "docs_pulled": 56, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 56}, "notes": "47 user manual PDFs + 9 troubleshooting fixes. v5 commit bbc0893."},
-    {"id": "course-transcripts", "name": "Certified Installer Program full transcripts (KNO-190, BRI-490)", "type": "SharePoint docx", "location": "/personal/madison_brighternights_com/Documents/Training Course Videos/Full_Transcript_and_Video_Mapping.docx", "state": "INGESTED", "docs_pulled": 48, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 48, "L5": 48}, "notes": "Modules 1-11 of the Masters of Lighting Academy. Doctrine notes on Modules 8 and 11. KBG-07 flags open re-classification pending BRI-491 Q2."},
-    {"id": "linear-rulings", "name": "Linear settled rulings and product truths", "type": "issue tracker", "location": "linear.app teams: Brighter Nights Website, Light Genie KB", "state": "INGESTED (first wave)", "docs_pulled": 8, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 8}, "notes": "Wave 1: BRI-388, BRI-434, BRI-807, BRI-491, BRI-484, BRI-26/BRI-312/BRI-506, BRI-357, BRI-353. Wave 2 queued."},
-    {"id": "outlook-sent-18mo", "name": "Austen's Outlook sent folder (18 month window)", "type": "mail archive", "location": "austen@brighternights.com sent items", "state": "INGESTED (waves 1-2)", "docs_pulled": 15, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 15}, "notes": "Voice fidelity target. Wave 1: Dan Lengyel welcome, Brandy track-color reply. Wave 2: Dana/Screen Factory Florida pool enclosure, Wyatt first-install handoff. EMS stocking email SKIPPED as distributor-tier. Mike MOL onboarding SKIPPED as REP-tier."},
-    {"id": "sharepoint-mol", "name": "SharePoint Masters of Lighting folders", "type": "SharePoint tree", "location": "3 folders across company, personal, SalesMarketing sites (41 items total surfaced)", "state": "SCANNED", "docs_pulled": 0, "last_crawl": "2026-10-03", "tier_assignments": {}, "notes": "41 items surfaced. Content varies."},
-    {"id": "sharepoint-product-pages", "name": "Product spec and website page content", "type": "SharePoint markdown and HTML", "location": "/sites/SalesMarketing/Shared Documents/New Website Images_Videos/Master_For_Review_Markdown_Edits/", "state": "INGESTED (wave 1)", "docs_pulled": 9, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 9}, "notes": "5 CONTENT.md files pulled (Pool Enclosure rev41, Sconce rev39, Soffit rev11, Deck rev15, Roofline rev27, Landscape rev6). Distilled to 9 L4-PAGE-* docs. All 5 pages publish 90-day warranty language — KBG-10 opened for site-wide 60-day copy update."},
-    {"id": "install-guides", "name": "Install guides and wiring diagrams", "type": "PDF", "location": "TBD", "state": "GAP", "docs_pulled": 0, "last_crawl": "pending", "tier_assignments": {}, "notes": "Partially covered by course Modules 2-6 install lessons."},
-    {"id": "zoho-inventory", "name": "Zoho Inventory (SKUs and replacement parts)", "type": "inventory API", "location": "Zoho Inventory via Zapier (connection 028ebba1)", "state": "QUEUED", "docs_pulled": 0, "last_crawl": "pending", "tier_assignments": {}, "notes": "Validation Run 2 Q15 flagged SKU gap."}
+    {"id": "tutorials-page", "name": "BNLT Tutorials and Troubleshooting page (BRI-1283)", "type": "public web page", "state": "INGESTED", "docs_pulled": 56, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 56}, "notes": "47 user manual PDFs + 9 troubleshooting fixes."},
+    {"id": "course-transcripts", "name": "Certified Installer Program full transcripts (KNO-190, BRI-490)", "type": "SharePoint docx", "state": "INGESTED", "docs_pulled": 48, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 48, "L5": 48}, "notes": "Modules 1-11 of the Masters of Lighting Academy. Doctrine notes on Modules 8 and 11. KBG-07 flags open re-classification pending BRI-491 Q2."},
+    {"id": "linear-rulings", "name": "Linear settled rulings and product truths", "type": "issue tracker", "state": "INGESTED (first wave)", "docs_pulled": 8, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 8}, "notes": "Wave 1: BRI-388, BRI-434, BRI-807, BRI-491, BRI-484, BRI-26/BRI-312/BRI-506, BRI-357, BRI-353. Wave 2 queued."},
+    {"id": "outlook-sent-18mo", "name": "Austen's Outlook sent folder (18 month window)", "type": "mail archive", "state": "INGESTED (waves 1-2)", "docs_pulled": 15, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 15}, "notes": "Dan Lengyel welcome, Brandy track-color reply, Dana pool enclosure reply, Wyatt first-install handoff. EMS stocking and Mike MOL onboarding SKIPPED."},
+    {"id": "sharepoint-mol", "name": "SharePoint Masters of Lighting folders", "type": "SharePoint tree", "state": "SCANNED", "docs_pulled": 0, "last_crawl": "2026-10-03", "tier_assignments": {}, "notes": "41 items surfaced. Content varies."},
+    {"id": "sharepoint-product-pages", "name": "Product spec and website page content", "type": "SharePoint markdown and HTML", "state": "INGESTED (wave 1)", "docs_pulled": 9, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 9}, "notes": "5 CONTENT.md files pulled, distilled to 9 L4-PAGE-* docs."},
+    {"id": "install-guides", "name": "Install guides and wiring diagrams", "type": "PDF", "state": "GAP", "docs_pulled": 0, "last_crawl": "pending", "tier_assignments": {}, "notes": "Partially covered by course Modules 2-6 install lessons."},
+    {"id": "zoho-inventory", "name": "Zoho Inventory (SKUs and replacement parts)", "type": "inventory API", "state": "INGESTED (wave 1)", "docs_pulled": 2, "last_crawl": "2026-10-03", "tier_assignments": {"L4": 2}, "notes": "325 active items crawled; 218 classified into tier-safe product groups across 2 catalog docs (kits + components). Cost fields (purchase_rate, cf_mscp, vendor_name, cf_markup_type) STRIPPED per BRI-434 Amendment 3. KBG-06 resolved."}
   ],
   "tiers": {
     "L1": {"name": "Signed out homeowner", "corpus_doc_count": 0, "state": "NOT STARTED"},
     "L2": {"name": "Verified contractor", "corpus_doc_count": 0, "state": "NOT STARTED (18 candidate docs tagged in L4 manifest smallest_tier_tracking)"},
     "L3": {"name": "Verified distributor rep", "corpus_doc_count": 0, "state": "NOT STARTED"},
-    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 136, "state": "LIVE (test rig, manifest-driven)", "live_url": "https://raw.githack.com/brighternights-lab/machine-ingest/main/genie-test-l4/index.html", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 209203, "approx_tokens": 52300, "chunks": 14, "last_scrub": "2026-10-03", "banned_term_hits": 0},
-    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 136, "state": "INHERITS L4"}
+    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 138, "state": "LIVE (test rig, manifest-driven)", "live_url": "https://raw.githack.com/brighternights-lab/machine-ingest/main/genie-test-l4/index.html", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 223402, "approx_tokens": 55850, "chunks": 15, "last_scrub": "2026-10-03", "banned_term_hits": 0},
+    "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 138, "state": "INHERITS L4"}
   },
   "validation_history": [
-    {"run": 1, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 25, "passed": 23, "kb_gaps_expected": 5, "kb_gaps_unexpected": 2, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Tutorials corpus only (56 docs)"},
-    {"run": 2, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 15, "passed": 13, "kb_gaps_expected": 2, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Full corpus 104 docs. Doctrine deferrals worked."},
-    {"run": 3, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Added Linear rulings 112 docs."},
-    {"run": 4, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Austen voice-01 added 119 docs."},
-    {"run": 5, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Austen voice-02 added 127 docs. Warranty doctrine deferral confirmed."},
-    {"run": 6, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Pages corpus added, 136 docs total. CRITICAL TEST Q7: warranty doctrine deferral held under STRONGEST source conflict yet (site + email both say 90, ruling says 60). Soffit UNRULED fields correctly refused (Q6)."}
+    {"run": 1, "date": "2026-10-03", "tier": "L4", "questions": 25, "passed": 23, "notes": "Tutorials only 56 docs"},
+    {"run": 2, "date": "2026-10-03", "tier": "L4", "questions": 15, "passed": 13, "notes": "Full corpus 104 docs"},
+    {"run": 3, "date": "2026-10-03", "tier": "L4", "questions": 10, "passed": 10, "notes": "Rulings added 112 docs"},
+    {"run": 4, "date": "2026-10-03", "tier": "L4", "questions": 10, "passed": 10, "notes": "Voice-01 added 119 docs"},
+    {"run": 5, "date": "2026-10-03", "tier": "L4", "questions": 10, "passed": 10, "notes": "Voice-02 added 127 docs. Warranty doctrine deferral worked."},
+    {"run": 6, "date": "2026-10-03", "tier": "L4", "questions": 10, "passed": 10, "notes": "Pages added 136 docs. Warranty doctrine held under strongest source conflict yet."},
+    {"run": 7, "date": "2026-10-03", "tier": "L4", "questions": 10, "passed": 10, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Zoho Inventory added 138 docs. SKU lookup resolved KBG-06. BOTH distributor-cost tests passed (direct SKU-prefixed probe + indirect vendor-name probe). Vendor names stripped from ingest held."}
   ],
   "open_kb_gaps": [
     {"id": "KBG-01", "topic": "Hardware service procedures", "tier": "L4", "found_in": "Run 1 Q19", "candidate_source": "install guides"},
     {"id": "KBG-02", "topic": "App download links", "tier": "L4", "found_in": "Run 1 Q23", "candidate_source": "new L4 doc"},
     {"id": "KBG-03", "topic": "Wiring diagrams for 3-wire C9 with Smart Plug", "tier": "L4", "found_in": "Run 1 Q21", "candidate_source": "install guides"},
-    {"id": "KBG-04", "topic": "Pricing tool routing (hand off to Job Estimator when live)", "tier": "L4", "found_in": "Run 1 Q20", "candidate_source": "BRI-366 / BRI-420"},
-    {"id": "KBG-05", "topic": "Tool pricing (Lead Generation, White Labeling monthly cost)", "tier": "L4", "found_in": "Run 2 Q14", "candidate_source": "BRI-366 / BRI-448"},
-    {"id": "KBG-06", "topic": "SKU and inventory data (replacement parts, kit SKUs)", "tier": "L4", "found_in": "Run 2 Q15", "candidate_source": "Zoho Inventory via Zapier"},
-    {"id": "KBG-07", "topic": "Re-classify course Modules 01-07 and voice docs flagged smallest_tier_target L2 from L4 to L2 pending BRI-491 Q2 ruling.", "tier": "L4-doctrine", "found_in": "LEARN EVERY TIME standing rule, Round 3", "candidate_source": "Austen ruling on BRI-491 Q2 then automated re-classification pass"},
-    {"id": "KBG-08", "topic": "24V power supply warranty term is UNRULED.", "tier": "L4", "found_in": "BRI-484", "candidate_source": "Austen one-line ruling on BRI-484"},
-    {"id": "KBG-09", "topic": "Warranty 90-day language in older Austen emails conflicts with 60-day FINAL ruling (BRI-484).", "tier": "L4-doctrine", "found_in": "Outlook wave 2 Dana email 2026-09-25", "candidate_source": "Already handled by L4-manifest doctrine_note on L4-VOICE-WARRANTY-FIELD-NARRATIVE."},
-    {"id": "KBG-10", "topic": "ENTIRE WEBSITE publishes 90-day warranty registration. All 5 product pages (Roofline rev27, Pool Enclosure rev41, Sconce rev39, Soffit rev11, Deck/Dock rev15, Landscape rev6) need site-wide copy update to 60 days.", "tier": "website-wide", "found_in": "Run 6 Q7, confirmed across all 5 CONTENT.md pulls", "candidate_source": "WordPress REST write via Zapier bnl-owner connection; patch each page's warranty copy block to 60 days."},
-    {"id": "KBG-11", "topic": "Soffit kit sizes and specific IP figure are UNRULED per rev11 review notes.", "tier": "L4", "found_in": "Soffit CONTENT 2.md rev11 self-flagged fields", "candidate_source": "Austen one-line ruling on soffit kit configuration and IP class."},
-    {"id": "KBG-12", "topic": "Deck page FAQ carries 'aluminum track' language copy-pasted from roofline template. Deck fixture is brushed stainless, not aluminum track. Page needs copy correction.", "tier": "website", "found_in": "Deck CONTENT.md rev15 FAQ, caught Run 6 Q3", "candidate_source": "WordPress REST write via Zapier bnl-owner connection."}
+    {"id": "KBG-04", "topic": "Pricing tool routing", "tier": "L4", "found_in": "Run 1 Q20", "candidate_source": "BRI-366 / BRI-420"},
+    {"id": "KBG-05", "topic": "Tool pricing (Lead Gen, White Labeling)", "tier": "L4", "found_in": "Run 2 Q14", "candidate_source": "BRI-366 / BRI-448"},
+    {"id": "KBG-07", "topic": "Re-classify course Modules 01-07 and voice docs flagged smallest_tier_target L2 pending BRI-491 Q2 ruling.", "tier": "L4-doctrine", "found_in": "LEARN rule, Round 3", "candidate_source": "Austen ruling on BRI-491 Q2"},
+    {"id": "KBG-08", "topic": "24V power supply warranty term UNRULED", "tier": "L4", "found_in": "BRI-484", "candidate_source": "Austen one-line ruling"},
+    {"id": "KBG-09", "topic": "Warranty 90-day language in Austen's older emails conflicts with 60-day FINAL ruling", "tier": "L4-doctrine", "found_in": "Outlook wave 2", "candidate_source": "Handled by doctrine_note"},
+    {"id": "KBG-10", "topic": "ENTIRE WEBSITE publishes 90-day warranty registration. Site-wide copy update to 60 days.", "tier": "website-wide", "found_in": "Run 6 Q7", "candidate_source": "WordPress REST write via Zapier bnl-owner"},
+    {"id": "KBG-11", "topic": "Soffit kit sizes and specific IP figure UNRULED per rev11 review notes", "tier": "L4", "found_in": "Soffit rev11", "candidate_source": "Austen one-line ruling"},
+    {"id": "KBG-12", "topic": "Deck page FAQ carries 'aluminum track' language from roofline template. Correction needed.", "tier": "website", "found_in": "Deck rev15", "candidate_source": "WordPress REST write"},
+    {"id": "KBG-13", "topic": "MT* SKU variant (MTRTLS, MTSFTS) difference from standard RTLS/SFTS UNRULED. Likely a MeshTek-branded parallel line but Austen ruling needed on what the field answer is for a contractor who asks.", "tier": "L4", "found_in": "Run 7 LEARN-11", "candidate_source": "Austen one-line ruling"},
+    {"id": "KBG-14", "topic": "107 Zoho inventory items did not fit standard tier-safe product taxonomy (channel inventory, fees, operational). Separate ingest wave needed if any contractor-facing content exists there.", "tier": "L4-ingest", "found_in": "Run 7 LEARN-10", "candidate_source": "Zoho Inventory re-crawl with wider classification"}
   ],
   "learn_findings": [
     {"id": "LEARN-01", "round": 3, "finding": "Course modules misclassified uniformly as L4. BRI-491 Q2 recommends Modules 01-07 at L2."},
-    {"id": "LEARN-02", "round": 4, "finding": "EMS stocking email contained distributor-tier Tier 1/Tier 2 pricing. SKIPPED. Classify by smallest tier BEFORE ingesting."},
+    {"id": "LEARN-02", "round": 4, "finding": "EMS stocking email contained distributor-tier pricing. SKIPPED. Classify by smallest tier BEFORE ingesting."},
     {"id": "LEARN-03", "round": 4, "finding": "Mike MOL onboarding is REP-tier, not L4 contractor. Email role framing determines tier."},
-    {"id": "LEARN-04", "round": 4, "finding": "Dana email states 90-day warranty, conflicts with BRI-484 60-day FINAL. Handled by doctrine_note."},
+    {"id": "LEARN-04", "round": 4, "finding": "Dana email 90-day warranty conflicts with BRI-484 60-day FINAL. Handled by doctrine_note."},
     {"id": "LEARN-05", "round": 5, "finding": "Doctrine_note mechanism works for Austen-voice conflicts same as pre-ruling course modules."},
-    {"id": "LEARN-06", "round": 5, "finding": "The 90-day warranty language is EVERYWHERE — all 5 live product pages AND Austen's own sent emails. The 60-day FINAL ruling is correct, but the entire outside-facing surface still says 90. KBG-10 is site-wide copy fix."},
-    {"id": "LEARN-07", "round": 5, "finding": "Deck page FAQ copy-pastes 'aluminum track' language from roofline template, but deck fixture is brushed stainless. Material-note added to L4-PAGE-DECK-DOCK-SPECS so Genie catches this."},
-    {"id": "LEARN-08", "round": 5, "finding": "When a source document self-flags UNRULED content (soffit rev11 flagged kit sizes and IP class), promote that flag to a doctrine_note on the corpus doc. The Genie then inherits the uncertainty rather than guessing."}
+    {"id": "LEARN-06", "round": 5, "finding": "The 90-day warranty language is EVERYWHERE on the outside-facing surface. KBG-10 is site-wide copy fix."},
+    {"id": "LEARN-07", "round": 5, "finding": "Deck page FAQ copy-pastes 'aluminum track' from roofline template. Deck fixture is brushed stainless."},
+    {"id": "LEARN-08", "round": 5, "finding": "When a source doc self-flags UNRULED content, promote to a doctrine_note so Genie inherits the uncertainty."},
+    {"id": "LEARN-09", "round": 6, "finding": "Inventory/accounting system ingest uses explicit ALLOWLIST, not denylist. Cost fields (purchase_rate, cf_mscp, vendor_name, cf_markup_type) are the LARGER surface. Pattern applies to any future ERP/CRM/inventory system crawl."},
+    {"id": "LEARN-10", "round": 6, "finding": "107 of 325 Zoho items did not fit standard SKU-prefix taxonomy (channel inventory, fees, operational). Correctly excluded from L4 corpus as non-tier-safe or non-product."},
+    {"id": "LEARN-11", "round": 6, "finding": "MT* SKU variants (MTRTLS, MTSFTS) are a parallel product line, likely MeshTek-branded. Vendor association NOT exposed. Difference UNRULED, filed as KBG-13."}
   ],
   "serving_status": {
     "state": "SCAFFOLD READY with manifest-driven loader, pending Austen key setup approval",
     "pattern": "context loaded per BRI-506, manifest-driven so new chunks auto-pick-up",
-    "approval_needed": "which key store Austen prefers for the Genie to pull from (handled in BRI-1308 comment, not written in this file)"
+    "approval_needed": "which key store Austen prefers for the Genie to pull from"
   }
 }
