@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lighting Genie — Ingest Tracking</title><style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;color:#EAF2F8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55}
+body{min-height:100vh;background-color:#0A0617;background-image:radial-gradient(ellipse 70% 55% at 15% 18%,rgba(236,0,140,0.28),transparent 60%),radial-gradient(ellipse 60% 50% at 92% 22%,rgba(0,169,181,0.32),transparent 65%),radial-gradient(ellipse 65% 55% at 88% 82%,rgba(255,122,26,0.22),transparent 65%),radial-gradient(ellipse 70% 55% at 8% 88%,rgba(227,5,107,0.28),transparent 60%),radial-gradient(circle at 50% 50%,rgba(5,2,15,0.75),transparent 70%);background-attachment:fixed;background-size:cover}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;align-items:center;gap:16px;padding:16px 0 24px;border-bottom:1px solid rgba(159,180,199,0.15);margin-bottom:24px}
+header img{height:60px}
+h1{margin:0;font-size:22px;font-weight:800;background:linear-gradient(135deg,#5BE3DD,#EC008C);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .sub{display:block;font-size:12px;color:#9FB4C7;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;background:none;-webkit-text-fill-color:#9FB4C7;margin-top:4px}
+.pill{display:inline-block;border:1px solid #EC008C;color:#EC008C;background:transparent;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin:2px 4px 2px 0}
+.pill.teal{border-color:#5BE3DD;color:#5BE3DD}
+.pill.orange{border-color:#FF7A1A;color:#FF7A1A}
+.pill.rose{border-color:#E3056B;color:#E3056B}
+.pill.muted{border-color:#9FB4C7;color:#9FB4C7}
+.panel{background:rgba(17,23,38,0.82);border:1px solid rgba(159,180,199,0.2);border-radius:14px;padding:20px;margin:0 0 20px;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,0.35)}
+.panel h2{margin:0 0 16px;font-size:16px;color:#5BE3DD;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.tiergrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.tiercard{background:rgba(10,6,23,0.5);border:1px solid rgba(159,180,199,0.2);border-radius:10px;padding:14px}
+.tiercard.live{border-color:#5BE3DD}
+.tiercard.inherit{border-color:#9FB4C7;opacity:0.9}
+.tiercard.notstarted{border-color:rgba(159,180,199,0.3);opacity:0.6}
+.tiercard .tier{font-size:28px;font-weight:800;background:linear-gradient(135deg,#5BE3DD,#EC008C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tiercard .name{color:#EAF2F8;font-size:13px;margin:2px 0 10px;font-weight:600}
+.tiercard .meta{color:#9FB4C7;font-size:11px;line-height:1.6}
+.tiercard .meta b{color:#EAF2F8}
+.srctable{width:100%;border-collapse:collapse;font-size:13px}
+.srctable th{text-align:left;color:#5BE3DD;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;font-size:11px;padding:8px 10px;border-bottom:1px solid rgba(159,180,199,0.3)}
+.srctable td{padding:10px;border-bottom:1px solid rgba(159,180,199,0.1);vertical-align:top}
+.srctable .state-INGESTED{color:#5BE3DD;font-weight:700}
+.srctable .state-SCANNED{color:#FF7A1A;font-weight:700}
+.srctable .state-QUEUED{color:#9FB4C7;font-weight:700}
+.srctable .state-GAP{color:#E3056B;font-weight:700}
+.srctable .notes{color:#9FB4C7;font-size:12px;max-width:360px}
+.srctable a{color:#5BE3DD;text-decoration:none;word-break:break-all}
+.kbgap{background:rgba(10,6,23,0.5);border:1px dashed rgba(255,122,26,0.6);border-radius:10px;padding:12px 14px;margin:0 0 10px}
+.kbgap h4{margin:0 0 4px;color:#FF7A1A;font-size:14px}
+.kbgap .meta{color:#9FB4C7;font-size:12px}
+.valrow{background:rgba(10,6,23,0.5);border:1px solid rgba(0,169,181,0.3);border-radius:10px;padding:12px 14px;margin:0 0 8px;display:grid;grid-template-columns:60px 1fr 1fr 1fr 1fr;gap:12px;align-items:center;font-size:13px}
+.valrow .n{font-size:18px;font-weight:800;color:#5BE3DD}
+.valrow .l{color:#9FB4C7;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+.valrow .v{color:#EAF2F8;font-weight:700;font-size:14px}
+.serving{background:rgba(10,6,23,0.5);border:1px dashed rgba(255,122,26,0.5);border-radius:10px;padding:14px 16px}
+.serving .state{color:#FF7A1A;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;font-size:12px}
+.serving p{margin:6px 0 0;color:#EAF2F8;font-size:13px}
+.serving a{color:#5BE3DD}
+a.linkpill{color:#5BE3DD;text-decoration:none;font-size:12px;border:1px solid rgba(0,169,181,0.4);padding:3px 8px;border-radius:999px;display:inline-block;margin:2px 0}
+a.linkpill:hover{border-color:#EC008C;color:#EC008C}
+.loading{color:#9FB4C7;font-size:12px;font-style:italic}
+.updated{color:#9FB4C7;font-size:11px;text-align:right;margin-top:6px}
+footer{color:#9FB4C7;font-size:11px;text-align:center;padding:30px 0 0;margin-top:30px;border-top:1px solid rgba(159,180,199,0.1)}
+footer a{color:#5BE3DD}
+</style></head><body><div class="wrap">
+<header>
+<img src="https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/tutorials/bnlt-logo.jpg" alt="BNLT">
+<div><h1>Lighting Genie Ingest Tracking<span class="sub">Live corpus state across all tiers and sources</span></h1></div>
+</header>
+
+<div class="panel"><h2>Tier state</h2>
+<div class="tiergrid" id="tiers"><div class="loading">Loading tier state...</div></div>
+</div>
+
+<div class="panel"><h2>Content sources <span class="pill muted" id="src-count"></span></h2>
+<table class="srctable"><thead><tr><th>Source</th><th>State</th><th>Docs</th><th>Last crawl</th><th>Notes</th></tr></thead><tbody id="sources"><tr><td colspan="5" class="loading">Loading sources...</td></tr></tbody></table>
+</div>
+
+<div class="panel"><h2>Validation history <span class="pill muted" id="val-count"></span></h2>
+<div id="validation"><div class="loading">Loading validation history...</div></div>
+</div>
+
+<div class="panel"><h2>Open kb-gaps <span class="pill orange" id="gap-count"></span></h2>
+<div id="gaps"><div class="loading">Loading open kb-gaps...</div></div>
+</div>
+
+<div class="panel"><h2>Serving status</h2>
+<div class="serving" id="serving"><div class="loading">Loading serving status...</div></div>
+</div>
+
+<div class="updated" id="updated"></div>
+
+<footer>
+Governing issue <a href="https://linear.app/brighter-nights-website/issue/BRI-1308/">BRI-1308</a> &middot; Nervous system <a href="https://linear.app/brighter-nights-website/issue/BRI-1277/">BRI-1277</a> &middot; Tutorials page <a href="https://raw.githack.com/brighternights-lab/machine-ingest/main/tutorials/index.html">here</a>
+</footer>
+
+<script>
+const STATE_URL = 'https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/tracking/ingest-state.json';
+
+async function load() {
+  try {
+    const resp = await fetch(STATE_URL + '?t=' + Date.now());
+    const state = await resp.json();
+    render(state);
+  } catch(e) {
+    document.getElementById('tiers').innerHTML = '<div class="loading">Load failed: ' + e.message + '</div>';
+  }
+}
+
+function render(s) {
+  const tiers = Object.entries(s.tiers).map(([k, t]) => {
+    const cls = t.state && t.state.startsWith('LIVE') ? 'live' : (t.state && t.state.includes('INHERITS') ? 'inherit' : 'notstarted');
+    const stateLabel = t.state || 'NOT STARTED';
+    const live = t.live_url ? '<a class="linkpill" href="' + t.live_url + '">Open chat</a>' : '';
+    return '<div class="tiercard ' + cls + '"><div class="tier">' + k + '</div><div class="name">' + t.name + '</div><div class="meta"><b>' + (t.corpus_doc_count || 0) + '</b> docs<br>' + stateLabel + (t.approx_tokens ? '<br>~' + t.approx_tokens.toLocaleString() + ' tokens' : '') + (t.last_scrub ? '<br>Scrubbed ' + t.last_scrub : '') + (t.banned_term_hits !== undefined ? '<br><b>' + t.banned_term_hits + '</b> banned-term hits' : '') + '</div>' + (live ? '<div style="margin-top:8px">' + live + '</div>' : '') + '</div>';
+  }).join('');
+  document.getElementById('tiers').innerHTML = tiers;
+
+  document.getElementById('src-count').textContent = s.sources.length + ' sources';
+  const sources = s.sources.map(src => {
+    const totalDocs = src.docs_pulled || 0;
+    return '<tr><td><b>' + escapeHtml(src.name) + '</b><br><span style="color:#9FB4C7;font-size:11px">' + escapeHtml(src.type) + '</span></td><td class="state-' + src.state + '">' + src.state + '</td><td>' + totalDocs + '</td><td>' + escapeHtml(src.last_crawl || '-') + '</td><td class="notes">' + escapeHtml(src.notes || '') + '</td></tr>';
+  }).join('');
+  document.getElementById('sources').innerHTML = sources;
+
+  document.getElementById('val-count').textContent = s.validation_history.length + ' runs';
+  const vals = s.validation_history.map(v =>
+    '<div class="valrow"><div><div class="n">#' + v.run + '</div><div class="l">' + v.date + '</div></div><div><div class="l">Tier</div><div class="v">' + v.tier + ' &middot; ' + v.questions + ' Q</div></div><div><div class="l">Passed</div><div class="v" style="color:#5BE3DD">' + v.passed + '/' + v.questions + '</div></div><div><div class="l">kb-gaps</div><div class="v" style="color:#FF7A1A">' + (v.kb_gaps_expected + v.kb_gaps_unexpected) + '</div></div><div><div class="l">Violations</div><div class="v" style="color:' + (v.banned_term_leaks + v.distributor_cost_leaks > 0 ? '#E3056B' : '#5BE3DD') + '">' + (v.banned_term_leaks + v.distributor_cost_leaks) + '</div></div></div>'
+  ).join('');
+  document.getElementById('validation').innerHTML = vals;
+
+  document.getElementById('gap-count').textContent = s.open_kb_gaps.length + ' open';
+  const gaps = s.open_kb_gaps.map(g =>
+    '<div class="kbgap"><h4>' + escapeHtml(g.id) + ' &middot; ' + escapeHtml(g.topic) + '</h4><div class="meta">Tier <b>' + escapeHtml(g.tier) + '</b> &middot; found in ' + escapeHtml(g.found_in) + ' &middot; candidate source <b>' + escapeHtml(g.candidate_source) + '</b></div></div>'
+  ).join('');
+  document.getElementById('gaps').innerHTML = gaps;
+
+  const srv = s.serving_status;
+  document.getElementById('serving').innerHTML =
+    '<div class="state">' + escapeHtml(srv.state) + '</div><p><b>Pattern.</b> ' + escapeHtml(srv.pattern) + '</p><p><b>Approval pending.</b> ' + escapeHtml(srv.approval_needed) + '</p>';
+
+  document.getElementById('updated').textContent = 'State generated ' + s.generated_at + ' &middot; dashboard auto-refreshes every 2 minutes';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+load();
+setInterval(load, 120000);
+</script>
+</div></body></html>
