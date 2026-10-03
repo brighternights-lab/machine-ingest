@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-10-03",
-  "version": 5,
+  "version": 6,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
@@ -24,7 +24,8 @@
     {"run": 1, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 25, "passed": 23, "kb_gaps_expected": 5, "kb_gaps_unexpected": 2, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Tutorials corpus only (56 docs)"},
     {"run": 2, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 15, "passed": 13, "kb_gaps_expected": 2, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Full corpus 104 docs. Doctrine deferrals worked."},
     {"run": 3, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Added Linear rulings 112 docs. Pricing gate, banned terms, warranty, doctrine deferrals all held."},
-    {"run": 4, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Austen voice added (voice-01) 119 docs. Direct quote-matching on Austen talk-track questions (maintenance program, 20-30% install speedup, 250-300 feet power injection, bronze track pull)."}
+    {"run": 4, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Austen voice added (voice-01) 119 docs. Direct quote-matching on Austen talk-track questions (maintenance program, 20-30% install speedup, 250-300 feet power injection, bronze track pull)."},
+    {"run": 5, "date": "2026-10-03", "tier": "L4", "method": "in-session Opus 4.7", "questions": 10, "passed": 10, "kb_gaps_expected": 0, "kb_gaps_unexpected": 0, "banned_term_leaks": 0, "distributor_cost_leaks": 0, "notes": "Outlook wave 2 voice added (voice-02) 127 docs. CRITICAL TEST: warranty doctrine deferral fired correctly — Genie defaulted to BRI-484 60-day FINAL ruling over Dana email's 90-day field language. Doctrine_note mechanism now proven for Austen-voice conflicts the same way it works for pre-ruling course modules."}
   ],
   "open_kb_gaps": [
     {"id": "KBG-01", "topic": "Hardware service procedures", "tier": "L4", "found_in": "Run 1 Q19", "candidate_source": "install guides"},
@@ -41,7 +42,8 @@
     {"id": "LEARN-01", "round": 3, "finding": "Course modules misclassified uniformly as L4 (recommendation b in BRI-491 Q2 suggests Modules 01-07 should be L2). Logged as KBG-07 for re-classification pass."},
     {"id": "LEARN-02", "round": 4, "finding": "EMS stocking email (Justin at ABC Supply, 2026-08-06) contained distributor-tier Tier 1/Tier 2 pricing. Correctly SKIPPED from L4 ingest. Pattern: classify by smallest tier BEFORE ingesting, not after. Will apply same filter to Great Meeting Today recap (2026-07-13) and Josh diligence package (2026-09-29) which are also distributor/investor tier."},
     {"id": "LEARN-03", "round": 4, "finding": "Mike MOL onboarding email (2026-07-08) is REP-tier (L5), not L4 contractor. Entire email structure addresses the rep role (compensation, 5-phase roadmap, playbooks for working with contractors). Even where sub-content is tier-safe, extracting from a rep-tier email risks tier mixing. Pattern: pull voice from contractor-facing emails directly, not from derived rep-track emails."},
-    {"id": "LEARN-04", "round": 4, "finding": "Dana/Screen Factory Florida email (2026-09-25) states 'registration within 90 days' which conflicts with BRI-484 60-day FINAL ruling. Caught during ingest, filed as doctrine_note on L4-VOICE-WARRANTY-FIELD-NARRATIVE AND as KBG-09 for website/template update. L4 Genie must defer to the ruling over the voice doc on any warranty answer."}
+    {"id": "LEARN-04", "round": 4, "finding": "Dana/Screen Factory Florida email (2026-09-25) states 'registration within 90 days' which conflicts with BRI-484 60-day FINAL ruling. Caught during ingest, filed as doctrine_note on L4-VOICE-WARRANTY-FIELD-NARRATIVE AND as KBG-09 for website/template update. L4 Genie must defer to the ruling over the voice doc on any warranty answer."},
+    {"id": "LEARN-05", "round": 5, "finding": "Doctrine_note mechanism works equally well for Austen-voice conflicts as it does for pre-ruling course modules. Validation Run 5 Q7 confirmed the Genie reads the doctrine_note and defers to the ruling automatically. Pattern: for any future ingest where voice content conflicts with a settled ruling, write a doctrine_note on the voice doc AND add a manifest-level doctrine_note for the doc prefix — the Genie handles the rest."}
   ],
   "serving_status": {
     "state": "SCAFFOLD READY with manifest-driven loader, pending Austen key setup approval",
