@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BNLT Light Genie — L4 Certified Contractor</title>
+<style>
+  :root {
+    --ground: #0B0E18;
+    --card: #111726;
+    --ink: #EAF2F8;
+    --muted: #9FB4C7;
+    --teal: #00A9B5;
+    --cyan: #5BE3DD;
+    --magenta: #EC008C;
+    --pink: #E3056B;
+    --orange: #FF7A1A;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--ground); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(236, 0, 140, 0.15), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(0, 169, 181, 0.15), transparent 60%),
+      linear-gradient(180deg, #0B0E18 0%, #10203C 20%, #171A3C 40%, #1A1240 60%, #140C2E 80%, #0B0E18 100%);
+  }
+  header {
+    padding: 24px 16px 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    background: linear-gradient(135deg, var(--teal), var(--magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+  }
+  header .sub {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--cyan);
+  }
+  #log {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 60vh;
+    margin: 16px 0;
+  }
+  .msg {
+    padding: 12px 14px;
+    border-radius: 10px;
+    line-height: 1.45;
+    font-size: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .msg.user {
+    background: rgba(0, 169, 181, 0.08);
+    border: 1px solid rgba(0, 169, 181, 0.4);
+    align-self: flex-end;
+    max-width: 85%;
+  }
+  .msg.genie {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    align-self: flex-start;
+    max-width: 92%;
+  }
+  .msg.sys {
+    background: transparent;
+    border: 1px dashed rgba(255,122,26,0.4);
+    color: var(--orange);
+    font-size: 13px;
+  }
+  form {
+    display: flex;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    background: var(--ground);
+    padding: 12px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  textarea {
+    flex: 1;
+    min-height: 48px;
+    max-height: 200px;
+    padding: 12px;
+    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--ink);
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+  }
+  textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+  button {
+    padding: 0 20px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid var(--magenta);
+    color: var(--magenta);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  button:hover { background: rgba(236, 0, 140, 0.08); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 24px 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>BNLT Light Genie</h1>
+  <div class="sub"><span class="pill">L4 Certified Contractor</span> &nbsp; Masters of Lighting Academy</div>
+</header>
+<main>
+  <div id="log">
+    <div class="msg sys">Ask the Genie anything about BNLT products, SKUs, pricing, warranty, install procedures, or the Masters of Lighting Academy. Every answer cites the corpus doc it came from.</div>
+  </div>
+  <form id="form">
+    <textarea id="input" placeholder="Ask the Genie…" required></textarea>
+    <button id="send" type="submit">Send</button>
+  </form>
+  <div class="footer">Governed by BRI-1308 · Corpus live from GitHub · Doctrine notes override voice and page content</div>
+</main>
+<script>
+  const log = document.getElementById('log');
+  const form = document.getElementById('form');
+  const input = document.getElementById('input');
+  const send = document.getElementById('send');
+  const history = [];
+
+  function append(role, text) {
+    const el = document.createElement('div');
+    el.className = 'msg ' + (role === 'user' ? 'user' : role === 'genie' ? 'genie' : 'sys');
+    el.textContent = text;
+    log.appendChild(el);
+    log.scrollTop = log.scrollHeight;
+    return el;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    append('user', text);
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    send.disabled = true;
+
+    const genieEl = append('genie', '');
+
+    try {
+      const res = await fetch('/api/genie', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      if (!res.ok) {
+        const t = await res.text();
+        genieEl.textContent = 'Error: ' + t;
+        send.disabled = false;
+        return;
+      }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let full = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split('\n');
+        buf = lines.pop() || '';
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const payload = line.slice(6);
+          if (payload === '[DONE]') continue;
+          try {
+            const evt = JSON.parse(payload);
+            if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
+              full += evt.delta.text;
+              genieEl.textContent = full;
+              log.scrollTop = log.scrollHeight;
+            }
+          } catch {}
+        }
+      }
+      history.push({ role: 'assistant', content: full });
+    } catch (err) {
+      genieEl.textContent = 'Network error: ' + err.message;
+    } finally {
+      send.disabled = false;
+      input.focus();
+    }
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+</script>
+</body>
+</html>
