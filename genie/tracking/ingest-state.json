@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-10-03",
-  "version": 13,
+  "version": 14,
   "governing_issue": "BRI-1308",
   "nervous_system_issue": "BRI-1277",
   "sources": [
@@ -14,17 +14,19 @@
     {"id": "install-guides", "state": "PARTIAL (M01+M02+M03 done; M05/M06/M07 Published PDFs remaining)", "docs_pulled": 15}
   ],
   "serving": {
-    "state": "SCAFFOLD DEPLOYED, pending 2 UI clicks",
+    "state": "LIVE",
     "netlify_site": "bnlt-genie",
     "netlify_site_id": "d8eab920-14f1-47c7-a567-1e75b2c0a869",
     "primary_url": "https://bnlt-genie.netlify.app",
     "project_url": "https://app.netlify.com/projects/bnlt-genie",
     "source_dir": "brighternights-lab/machine-ingest/genie-live/",
-    "env_vars": {"ANTHROPIC_API_KEY": "placeholder, needs Austen paste"},
-    "pending_actions": ["Link site to GitHub repo in Netlify UI (base dir genie-live)", "Paste real ANTHROPIC_API_KEY in Netlify env var"]
+    "env_vars": {"ANTHROPIC_API_KEY": "set (secret), scoped Builds/Functions/Runtime, same value across Production/Deploy Previews/Branch deploys/Preview Server & Agent Runners"},
+    "pending_actions": [],
+    "go_live_date": "2026-10-03",
+    "go_live_verification": "Health check has_key:true; 3/3 probes passed (warranty, six-systems, L2 pricing refusal). Citations use internal L4 doc IDs, not BRI numbers -- flagged in BRI-1308 comment for Austen's call."
   },
   "tiers": {
-    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 165, "state": "LIVE (test rig, manifest-driven); SERVING SCAFFOLD DEPLOYED", "live_url": "https://bnlt-genie.netlify.app (after key paste)", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 287613, "approx_tokens": 71900, "chunks": 21, "last_scrub": "2026-10-03", "banned_term_hits": 0, "doctrine_notes": 14},
+    "L4": {"name": "Certified contractor (Masters of Lighting)", "corpus_doc_count": 165, "state": "LIVE", "live_url": "https://bnlt-genie.netlify.app", "catalog_url": "https://raw.githubusercontent.com/brighternights-lab/machine-ingest/main/genie/L4-manifest.json", "corpus_bytes": 287613, "approx_tokens": 71900, "chunks": 21, "last_scrub": "2026-10-03", "banned_term_hits": 0, "doctrine_notes": 14},
     "L5": {"name": "Certified distributor rep (inherits L4)", "corpus_doc_count": 165, "state": "INHERITS L4"}
   },
   "validation_history": [
@@ -60,7 +62,7 @@
     {"id": "KBG-08", "topic": "24V power supply warranty UNRULED → 3 years FINAL", "resolved_round": "Round 8", "resolved_date": "2026-10-03"}
   ],
   "serving_status": {
-    "state": "SERVING SCAFFOLD DEPLOYED, pending 2 Austen UI clicks at app.netlify.com/projects/bnlt-genie: (1) link site to GitHub repo, (2) paste ANTHROPIC_API_KEY",
+    "state": "LIVE as of 2026-10-03. Netlify site bnlt-genie linked to brighternights-lab/machine-ingest (main, genie-live), ANTHROPIC_API_KEY set, deployed, health check and 3 probes passed.",
     "pattern": "Netlify edge function pulls manifest + chunks from GitHub on each request, builds system prompt with doctrine notes, streams Anthropic Messages API with prompt caching"
   }
 }
